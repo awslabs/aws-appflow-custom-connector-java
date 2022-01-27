@@ -1,4 +1,4 @@
-## My Project
+## AppFlow Custom Connector SDK
 
 TODO: Fill this README out!
 
