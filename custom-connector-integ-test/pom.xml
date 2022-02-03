@@ -16,7 +16,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <log4j.version>2.17.1</log4j.version>
         <testng.version>7.0.0</testng.version>
-        <fasterxml.jackson.version>2.10.5</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.10.5.1</fasterxml.jackson.version>
         <aws-cdk.version>1.89.0</aws-cdk.version>
         <aws-sdk.version>1.12.151</aws-sdk.version>
     </properties>
