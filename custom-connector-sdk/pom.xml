@@ -55,7 +55,7 @@
     </licenses>
 
     <properties>
-        <log4j.version>2.13.0</log4j.version>
+        <log4j.version>2.17.1</log4j.version>
         <secretsmanager.version>1.0.0</secretsmanager.version>
         <json.version>20180130</json.version>
     </properties>
