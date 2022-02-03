@@ -1,0 +1,55 @@
+{
+  "connectorEntityFields": [
+    {
+      "identifier": "Id",
+      "label": "Account ID",
+      "isPrimaryKey": false,
+      "defaultValue": null,
+      "isDeprecated": false,
+      "supportedFieldTypeDetails": {
+        "v1": {
+          "fieldType": "String",
+          "filterOperators": [
+            "CONTAINS",
+            "EQUAL_TO",
+            "NOT_EQUAL_TO"
+          ],
+          "supportedValues": [
+          ],
+          "valueRegexPattern": null,
+          "supportedDateFormat": null,
+          "fieldValueRange": null,
+          "fieldLengthRange": null
+        }
+      },
+      "description": "Account ID",
+      "sourceProperties": {
+        "isRetrievable": true,
+        "isQueryable": true,
+        "isTimestampFieldForIncrementalQueries": false,
+        "queryable": true,
+        "retrievable": true,
+        "timestampFieldForIncrementalQueries": false
+      },
+      "destinationProperties": {
+        "isCreatable": false,
+        "isNullable": false,
+        "isUpsertable": false,
+        "isUpdatable": false,
+        "isDefaultedOnCreate": true,
+        "supportedWriteOperations": [
+          "UPSERT",
+          "UPDATE"
+        ],
+        "defaultedOnCreate": true,
+        "updatable": false,
+        "nullable": false,
+        "creatable": false,
+        "upsertable": false
+      },
+      "customProperties": null,
+      "primaryKey": false,
+      "deprecated": false
+    }
+  ]
+}

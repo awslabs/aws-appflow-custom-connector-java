@@ -1,0 +1,24 @@
+#Wed Feb 02 16:18:33 PST 2022
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/CleanupTest.java=1643831461617
+configuration*?=025DA68E15CFB198CD11A7F42748355B34334D0E
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/BasicCustomConnectorTestCases.java=1643831461616
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/ServiceProvider.java=1643831461616
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/CredentialsProvider.java=1643831461615
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/DescribeConnectorEntityTestConfiguration.java=1643831461613
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/CustomConnectorProfileConfiguration.java=1643831461613
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/ListConnectorEntitiesTestConfiguration.java=1643831461613
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/CustomConnectorConfiguration.java=1643831461613
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/RequestProvider.java=1643831461615
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/ResourceInfoProvider.java=1643831461615
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/OnDemandToS3TestConfiguration.java=1643831461614
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/S3Helper.java=1643831461618
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/AuthenticationType.java=1643831461614
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/FlowPoller.java=1643831461617
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/ConfigurationUtil.java=1643831461617
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/TestCredentials.java=1643831461616
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/DataProvider.java=1643831461615
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/OnDemandFromS3TestConfiguration.java=1643831461613
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/TestBucketConfiguration.java=1643831461614
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/PollingConfiguration.java=1643831461617
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/TestConfigurationDataProvider.java=1643831461617
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/TestConfiguration.java=1643831461614

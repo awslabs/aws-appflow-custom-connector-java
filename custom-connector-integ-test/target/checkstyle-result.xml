@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/S3Helper.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/FlowPoller.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/ConfigurationUtil.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/util/PollingConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/ResourceInfoProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/TestCredentials.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/DataProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/RequestProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/CredentialsProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/AuthenticationType.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/providers/ServiceProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/CleanupTest.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/BasicCustomConnectorTestCases.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/tests/TestConfigurationDataProvider.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/CustomConnectorConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/DescribeConnectorEntityTestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/OnDemandToS3TestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/CustomConnectorProfileConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/TestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/ListConnectorEntitiesTestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/TestBucketConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/src/main/java/com/amzonaws/appflow/custom/connector/integ/data/OnDemandFromS3TestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/util/ImmutablePollingConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/providers/ImmutableTestCredentials.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableListConnectorEntitiesTestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableDescribeConnectorEntityTestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableOnDemandToS3TestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableTestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableOnDemandFromS3TestConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableCustomConnectorProfileConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableTestBucketConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-integ-test/target/generated-sources/annotations/com/amzonaws/appflow/custom/connector/integ/data/ImmutableCustomConnectorConfiguration.java">
+</file>
+</checkstyle>

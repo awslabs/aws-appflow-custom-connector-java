@@ -1,0 +1,19 @@
+#Wed Feb 02 16:18:41 PST 2022
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceLambdaHandler.java=1643831461607
+configuration*?=32451D213A30B8067C3BDDD0CDB5B14CC93BF2B0
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceRecordHandler.java=1643831461607
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/ConnectorSettingKey.java=1643831461606
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/SalesForceQueryFilterExpressionVisitor.java=1643831461609
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/AbstractSalesforceHandler.java=1643831461606
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/RecordResponseParser.java=1643831461608
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceConfigurationHandler.java=1643831461607
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/EntityParser.java=1643831461608
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/SalesforceConnectorConfiguration.java=1643831461606
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceMetadataHandler.java=1643831461607
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/SalesforceQueryBuilder.java=1643831461609
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/QueryObject.java=1643831461608
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/SalesforceResponse.java=1643831461605
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/validation/RequestValidator.java=1643831461609
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/AbstractParser.java=1643831461607
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/SupportedSalesforceVersion.java=1643831461606
+/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/client/HttpClient.java=1643831461605

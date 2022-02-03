@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/RunTests.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/resources/TestContext.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/resources/TestLogger.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/exceptions/ValidationException.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/model/RetrieveRecordConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/model/TestConfig.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/model/WriteRecordConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/model/QueryRecordConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/invokers/ConnectorTestInvoker.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/invokers/BaseConnectorTestInvoker.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/validation/UrlValidator.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-tests/src/main/java/com/amazonaws/appflow/custom/connector/tests/validation/ConnectorConfigurationResponseValidator.java">
+</file>
+</checkstyle>

@@ -1,0 +1,3 @@
+com/amazonaws/appflow/custom/connector/queryfilter/QueryFilterExpressionVisitorTest.class
+com/amazonaws/appflow/custom/connector/queryfilter/TestQueryFilterExpressionVisitor.class
+com/amazonaws/appflow/custom/connector/queryfilter/CustomConnectorParseTreeBuilderTest.class

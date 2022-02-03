@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/SalesforceResponse.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceLambdaHandler.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceRecordHandler.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/AbstractSalesforceHandler.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceMetadataHandler.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/handler/SalesforceConfigurationHandler.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/SalesforceConnectorConfiguration.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/SupportedSalesforceVersion.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/configuration/ConnectorSettingKey.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/RecordResponseParser.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/EntityParser.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/parser/AbstractParser.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/SalesforceQueryBuilder.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/SalesForceQueryFilterExpressionVisitor.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/query/QueryObject.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/client/HttpClient.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/src/main/java/com/amazonaws/appflow/custom/connector/example/validation/RequestValidator.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/target/generated-sources/annotations/com/amazonaws/appflow/custom/connector/example/ImmutableSalesforceResponse.java">
+</file>
+<file name="/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-example/target/generated-sources/annotations/com/amazonaws/appflow/custom/connector/example/query/ImmutableQueryObject.java">
+</file>
+</checkstyle>
