@@ -18,7 +18,7 @@
         <testng.version>7.0.0</testng.version>
         <fasterxml.jackson.version>2.10.5</fasterxml.jackson.version>
         <aws-cdk.version>1.89.0</aws-cdk.version>
-        <aws-sdk.version>1.12.99</aws-sdk.version>
+        <aws-sdk.version>1.12.151</aws-sdk.version>
     </properties>
 
     <dependencies>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-appflow</artifactId>
-            <version>1.12.151</version>
+            <version>${aws-sdk.version}</version>
         </dependency>
     </dependencies>
 

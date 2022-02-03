@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.amazonaws.appflow.custom.connector.example.query.SalesForceQueryFilterExpressionVisitorTest
--------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.219 s - in com.amazonaws.appflow.custom.connector.example.query.SalesForceQueryFilterExpressionVisitorTest

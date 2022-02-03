@@ -1,9 +1,0 @@
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserBaseVisitor.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/SyntaxErrorReporter.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/InvalidFilterExpressionException.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/CustomConnectorParseTreeBuilder.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserListener.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParser.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserBaseListener.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserVisitor.java
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterLexer.java

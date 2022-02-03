@@ -1,7 +1,0 @@
-#Wed Feb 02 16:18:29 PST 2022
-configuration*?=29CDE95CFBE0F21A8387DBFC1CE46A8FF842D99A
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/SyntaxErrorReporter.java=1643831461621
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/InvalidFilterExpressionException.java=1643831461620
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserListener.java=1643831461623
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/CustomConnectorParseTreeBuilder.java=1643831461620
-/Users/banvipul/sdk-java-2/aws-appflow-custom-connector/custom-connector-queryfilter/src/main/java/com/amazonaws/appflow/custom/connector/queryfilter/antlr/CustomConnectorQueryFilterParserVisitor.java=1643831461623

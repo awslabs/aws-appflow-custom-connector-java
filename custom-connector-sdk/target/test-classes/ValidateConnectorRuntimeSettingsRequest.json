@@ -1,7 +1,0 @@
-{
-  "type": "ValidateConnectorRuntimeSettingsRequest",
-  "scope": "CONNECTOR_PROFILE",
-  "connectorRuntimeSettings": {
-    "instanceUrl": "https://www.example.com"
-  }
-}
