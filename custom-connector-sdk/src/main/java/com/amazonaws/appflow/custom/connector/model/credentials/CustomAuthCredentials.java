@@ -43,10 +43,6 @@ public interface CustomAuthCredentials {
      */
      String customAuthenticationType();
 
-    /**
-     * [Deprecated: Added for backward compatiblity]Authentication Type defined by Connector.
-     */
-     String authenticationType(); 
    /**
      * Custom Credentials provided by connector user. Key will be <code>AuthParameter.key()</code> and value will be the
      * input provided by user.
