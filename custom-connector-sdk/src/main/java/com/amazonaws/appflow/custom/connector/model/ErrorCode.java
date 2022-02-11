@@ -1,7 +1,7 @@
 /*
  * -
  *  * #%L
- * * Amazon Appflow Custom Connector SDK.
+ * * Amazon AppFlow Custom Connector SDK.
  * *
  * %%
  * Copyright (C) 2021 Amazon Web Services
@@ -29,57 +29,51 @@ package com.amazonaws.appflow.custom.connector.model;
  */
 public enum ErrorCode {
     /**
-     * Specifies error is due to client.
-     */
-    ClientError,
-
-    /**
-     * Specifies error is due to application.
-     */
-    ServerError,
-
-    /**
-     * Invalid arguments provided as input.
+     * Invalid arguments provided as input/HttpStatus 400/413 from application/Bad Request exception from Application.
+     * for e.g QueryURI too large, write request payload too large etc.
      */
     InvalidArgument,
 
     /**
-     * Credentials were rejected by the underlying application.
+     * Credentials were rejected by the underlying application/HttpStatus 401 from Application.
      */
     InvalidCredentials,
 
     /**
-     * Resource access denied by the underlying application.
+     * Resource access denied by the underlying application/HttpStatus 403 from Application.
      */
     AccessDenied,
 
     /**
-     * The request to the underlying application timed out.
+     * The request to the underlying application timed out/HttpStatus 408 from Application.
      */
     RequestTimeout,
 
     /**
-     * Payload size is too large.
-     */
-    PayloadTooLarge,
-
-    /**
-     * Request got rejected by the underlying application due to rate limit violation.
+     * Request got rejected by the underlying application due to rate limit violation/HttpStatus 429 from Application.
      */
     RateLimitExceeded,
 
     /**
-     * Not able to serve the request due to an internal error.
-     */
-    InternalServerError,
-
-    /**
-     * Server is not available to serve the requests at the moment
+     * Application is not available to serve the requests at the moment/HttpStatus 503 from Application.
      */
     ServiceUnavailable,
 
     /**
-     * Unknown Error from the application.
+     * Specifies error is due to client or HttpStatus 4XX from Application.
+     * Use specific error codes if present.
+     */
+    ClientError,
+
+    /**
+     * Specifies error is due to Application or HttpStatus 5XX from Application.
+     * Use specific error codes if present.
+     */
+    ServerError,
+
+    /**
+     * Unknown Error from the application. Use this Error Code only when you are not able to use the
+     * other specific error codes.
      */
     UnknownError
 }

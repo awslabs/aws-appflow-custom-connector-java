@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: "com.amazonaws.appflow.custom.connector.example.handler.SalesforceLambdaHandler::handleRequest"
       CodeUri: "./target/custom-connector-example-1.0.jar"
-      Description: "Example for writing and deploying your Appflow connector"
+      Description: "Example for writing and deploying your AppFlow connector"
       Runtime: java8
       Timeout: 30
       MemorySize: 256

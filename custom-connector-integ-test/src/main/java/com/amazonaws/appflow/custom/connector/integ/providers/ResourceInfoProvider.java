@@ -17,9 +17,9 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
-import com.amzonaws.appflow.custom.connector.integ.data.TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.TestConfiguration;
 import org.testng.SkipException;
 
 import java.time.Instant;

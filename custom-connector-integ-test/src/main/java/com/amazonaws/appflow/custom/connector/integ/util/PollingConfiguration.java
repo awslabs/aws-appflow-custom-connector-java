@@ -1,6 +1,6 @@
 /*-
  * #%L
- * custom-connector-integ-test
+ * aws-custom-connector-integ-test
  * %%
  * Copyright (C) 2021 Amazon Web Services
  * %%
@@ -17,26 +17,17 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.util;
 
-import com.amazonaws.appflow.custom.connector.model.credentials.Credentials;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
-import java.util.Optional;
-
-/**
- * Contains the test credentials required to create the connector profile.
- */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableTestCredentials.class)
-@JsonSerialize(as = ImmutableTestCredentials.class)
-public interface TestCredentials {
+public interface PollingConfiguration {
+    int maxPollTimeS();
 
-    Optional<Credentials> credentials();
+    int timeBetweenPollsS();
 
-    Optional<String> clientId();
+    String executionId();
 
-    Optional<String> clientSecret();
+    String flowName();
 }

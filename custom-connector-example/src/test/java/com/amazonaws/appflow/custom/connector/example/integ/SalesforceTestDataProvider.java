@@ -19,7 +19,7 @@
  */
 package com.amazonaws.appflow.custom.connector.example.integ;
 
-import com.amzonaws.appflow.custom.connector.integ.providers.DataProvider;
+import com.amazonaws.appflow.custom.connector.integ.providers.DataProvider;
 
 public class SalesforceTestDataProvider implements DataProvider {
 

@@ -17,40 +17,29 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
  * Refer to sample-test-config.json
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableOnDemandToS3TestConfiguration.class)
-@JsonSerialize(as = ImmutableOnDemandToS3TestConfiguration.class)
-public interface OnDemandToS3TestConfiguration {
-    Optional<String> testName();
-
-    Optional<String> apiVersion();
-
-    Optional<String> profileName();
-
-    String flowName();
+@JsonDeserialize(as = ImmutableDescribeConnectorEntityTestConfiguration.class)
+@JsonSerialize(as = ImmutableDescribeConnectorEntityTestConfiguration.class)
+public interface DescribeConnectorEntityTestConfiguration {
 
     String entityName();
 
-    Optional<String> query();
+    Optional<String> validationFileName();
 
-    Optional<Integer> flowTimeout();
+    Optional<String> profileName();
 
-    List<String> entityFields();
+    Optional<String> testName();
 
-    Optional<Long> outputSize();
-
-    Optional<Map<String, String>> sourceRuntimeProperties();
+    Optional<String> apiVersion();
 }

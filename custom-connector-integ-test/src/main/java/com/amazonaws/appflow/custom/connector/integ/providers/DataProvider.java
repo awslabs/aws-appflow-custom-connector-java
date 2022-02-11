@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
 /**
  * Interface that can be implemented as part of the destination flow test case in order to create the sample data

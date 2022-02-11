@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
 import com.amazonaws.services.appflow.AmazonAppflow;
 import com.amazonaws.services.appflow.AmazonAppflowClientBuilder;
@@ -25,7 +25,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
-import com.amzonaws.appflow.custom.connector.integ.util.FlowPoller;
+import com.amazonaws.appflow.custom.connector.integ.util.FlowPoller;
 
 /**
  * This class contains singleton service references.

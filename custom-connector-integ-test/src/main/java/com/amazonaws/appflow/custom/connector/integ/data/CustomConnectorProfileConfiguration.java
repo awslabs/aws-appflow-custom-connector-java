@@ -17,13 +17,14 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
+import com.amazonaws.appflow.custom.connector.integ.providers.AuthenticationType;
+import com.amazonaws.services.appflow.model.OAuth2Properties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -31,28 +32,21 @@ import java.util.Optional;
  * Refer to sample-test-config.json
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableOnDemandFromS3TestConfiguration.class)
-@JsonSerialize(as = ImmutableOnDemandFromS3TestConfiguration.class)
-public interface OnDemandFromS3TestConfiguration {
-    Optional<String> testName();
+@JsonDeserialize(as = ImmutableCustomConnectorProfileConfiguration.class)
+@JsonSerialize(as = ImmutableCustomConnectorProfileConfiguration.class)
+public interface CustomConnectorProfileConfiguration {
 
-    Optional<String> apiVersion();
+    Optional<String> secretsManagerArn();
 
-    Optional<String> profileName();
+    String name();
 
-    String entityName();
+    Optional<OAuth2Properties> oAuth2Properties();
 
-    String flowName();
+    Optional<String> connectorName();
 
-    Optional<List<String>> idFieldNames();
+    Optional<Map<String, String>> profileProperties();
 
-    String writeOperationType();
+    AuthenticationType authenticationType();
 
-    Optional<Integer> flowTimeout();
-
-    Optional<String> sourceDataFile();
-
-    Optional<String> dataGeneratorClassName();
-
-    Optional<Map<String, String>> destinationRuntimeSettings();
+    Optional<String> defaultApiVersion();
 }

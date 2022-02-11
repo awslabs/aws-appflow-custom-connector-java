@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -29,11 +29,10 @@ import java.util.Optional;
  * Refer to sample-test-config.json
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableDescribeConnectorEntityTestConfiguration.class)
-@JsonSerialize(as = ImmutableDescribeConnectorEntityTestConfiguration.class)
-public interface DescribeConnectorEntityTestConfiguration {
-
-    String entityName();
+@JsonDeserialize(as = ImmutableListConnectorEntitiesTestConfiguration.class)
+@JsonSerialize(as = ImmutableListConnectorEntitiesTestConfiguration.class)
+public interface ListConnectorEntitiesTestConfiguration {
+    Optional<String> entitiesPath();
 
     Optional<String> validationFileName();
 

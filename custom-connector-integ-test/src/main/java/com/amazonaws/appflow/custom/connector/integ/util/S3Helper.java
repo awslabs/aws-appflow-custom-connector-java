@@ -17,13 +17,13 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.util;
+package com.amazonaws.appflow.custom.connector.integ.util;
 
+import com.amazonaws.appflow.custom.connector.integ.data.TestBucketConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.providers.ServiceProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amzonaws.appflow.custom.connector.integ.data.TestBucketConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
