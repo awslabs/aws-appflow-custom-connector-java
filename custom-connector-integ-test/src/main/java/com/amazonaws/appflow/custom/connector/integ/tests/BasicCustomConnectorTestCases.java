@@ -17,8 +17,18 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.tests;
+package com.amazonaws.appflow.custom.connector.integ.tests;
 
+import com.amazonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.DescribeConnectorEntityTestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.ListConnectorEntitiesTestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.OnDemandFromS3TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.OnDemandToS3TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.providers.DataProvider;
+import com.amazonaws.appflow.custom.connector.integ.providers.RequestProvider;
+import com.amazonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider;
+import com.amazonaws.appflow.custom.connector.integ.providers.ServiceProvider;
 import com.amazonaws.services.appflow.AmazonAppflow;
 import com.amazonaws.services.appflow.model.ConnectorEntity;
 import com.amazonaws.services.appflow.model.ConnectorEntityField;
@@ -29,20 +39,11 @@ import com.amazonaws.services.appflow.model.ExecutionRecord;
 import com.amazonaws.services.appflow.model.ExecutionStatus;
 import com.amazonaws.services.appflow.model.ListConnectorEntitiesResult;
 import com.amazonaws.services.appflow.model.StartFlowRequest;
-import com.amzonaws.appflow.custom.connector.integ.data.CustomConnectorConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.DescribeConnectorEntityTestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.ListConnectorEntitiesTestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.OnDemandFromS3TestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.OnDemandToS3TestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.TestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.providers.DataProvider;
-import com.amzonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider;
-import com.amzonaws.appflow.custom.connector.integ.providers.RequestProvider;
+import com.amazonaws.appflow.custom.connector.integ.data.CustomConnectorConfiguration;
 
-import com.amzonaws.appflow.custom.connector.integ.util.ConfigurationUtil;
-import com.amzonaws.appflow.custom.connector.integ.util.ImmutablePollingConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.util.S3Helper;
+import com.amazonaws.appflow.custom.connector.integ.util.ConfigurationUtil;
+import com.amazonaws.appflow.custom.connector.integ.util.ImmutablePollingConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.util.S3Helper;
 
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -58,9 +59,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider.getAppflow;
-import static com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider.getFlowPoller;
-import static com.amzonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
+import static com.amazonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
 
 public class BasicCustomConnectorTestCases {
 
@@ -80,7 +79,7 @@ public class BasicCustomConnectorTestCases {
     public void setUp(final ITestContext iTestContext) {
         configuration = getTestConfiguration(iTestContext);
         resourceInfoProvider = new ResourceInfoProvider(configuration);
-        appflow = getAppflow();
+        appflow = ServiceProvider.getAppflow();
         requestProvider = new RequestProvider(resourceInfoProvider, configuration.testBucketConfiguration());
         s3Helper = new S3Helper(configuration.testBucketConfiguration());
     }
@@ -163,7 +162,7 @@ public class BasicCustomConnectorTestCases {
         CreateFlowRequest createFlowRequest = requestProvider.getSourceCreateFlowRequest(configuration);
         appflow.createFlow(createFlowRequest);
         String executionId = appflow.startFlow(new StartFlowRequest().withFlowName(flowName)).getExecutionId();
-        Optional<ExecutionRecord> executionRecord = getFlowPoller().pollForExecutionRecordsResponse(ImmutablePollingConfiguration.builder().executionId(executionId)
+        Optional<ExecutionRecord> executionRecord = ServiceProvider.getFlowPoller().pollForExecutionRecordsResponse(ImmutablePollingConfiguration.builder().executionId(executionId)
                 .maxPollTimeS(configuration.flowTimeout().orElse(MAX_POLLING_TIME))
                 .timeBetweenPollsS(configuration.flowTimeout().orElse(MAX_POLLING_TIME) / 5)
                 .flowName(flowName).build());
@@ -197,7 +196,7 @@ public class BasicCustomConnectorTestCases {
         CreateFlowRequest createFlowRequest = requestProvider.getDestinationCreateFlowRequest(configuration, fields);
         appflow.createFlow(createFlowRequest);
         String executionId = appflow.startFlow(new StartFlowRequest().withFlowName(flowName)).getExecutionId();
-        Optional<ExecutionRecord> executionRecord = getFlowPoller().pollForExecutionRecordsResponse(ImmutablePollingConfiguration.builder().executionId(executionId)
+        Optional<ExecutionRecord> executionRecord = ServiceProvider.getFlowPoller().pollForExecutionRecordsResponse(ImmutablePollingConfiguration.builder().executionId(executionId)
                 .maxPollTimeS(configuration.flowTimeout().orElse(MAX_POLLING_TIME))
                 .timeBetweenPollsS(configuration.flowTimeout().orElse(MAX_POLLING_TIME) / 5)
                 .flowName(flowName).build());

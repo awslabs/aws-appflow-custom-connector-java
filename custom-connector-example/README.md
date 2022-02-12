@@ -4,6 +4,8 @@ This module is meant to serve as a guided example for writing and deploying a co
 
 This tutorial also includes an example Salesforce connector that you can use immediately in AppFlow to test custom connector capabilities. This tutorial includes details about Salesforce connectors that are built using the aws-appflow-custom-connector module.
 
+Note :: This connector is only for the demonstration purpose and not meant for production.
+
 ## SalesforceExampleConnector:
 
 A sample connector built using aws-appflow-custom-connector module to interact with Salesforce APIs using Http REST APIs in Amazon AppFlow. This connector has the following capabilities:

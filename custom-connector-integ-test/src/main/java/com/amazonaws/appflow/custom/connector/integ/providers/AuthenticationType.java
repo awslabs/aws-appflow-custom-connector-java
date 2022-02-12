@@ -1,6 +1,6 @@
 /*-
  * #%L
- * aws-custom-connector-integ-test
+ * custom-connector-integ-test
  * %%
  * Copyright (C) 2021 Amazon Web Services
  * %%
@@ -17,25 +17,21 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.immutables.value.Value;
-
-import java.util.Optional;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
 /**
- * Refer to sample-test-config.json
+ * Authentication types supported by the SDK interface.
  */
-@Value.Immutable
-@JsonDeserialize(as = ImmutableCustomConnectorConfiguration.class)
-@JsonSerialize(as = ImmutableCustomConnectorConfiguration.class)
-public interface CustomConnectorConfiguration {
+public enum AuthenticationType {
+    OAUTH2("OAuth2"),
+    BASIC("Basic"),
+    API_KEY("ApiKey"),
+    CUSTOM("Custom"),
+    NO_AUTH("NoAuth");
 
-    String lambdaArn();
+    private final String type;
 
-    String name();
-
-    Optional<String> validationFileName();
+    AuthenticationType(final String type) {
+        this.type = type;
+    }
 }

@@ -17,8 +17,9 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.util;
+package com.amazonaws.appflow.custom.connector.integ.util;
 
+import com.amazonaws.appflow.custom.connector.integ.providers.ServiceProvider;
 import com.amazonaws.services.appflow.AmazonAppflow;
 import com.amazonaws.services.appflow.model.DescribeFlowExecutionRecordsRequest;
 import com.amazonaws.services.appflow.model.DescribeFlowExecutionRecordsResult;
@@ -29,7 +30,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Optional;
 
 import static com.amazonaws.services.appflow.model.ExecutionStatus.InProgress;
-import static com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider.getAppflow;
 
 /**
  * Util class for polling flow executions util completion.
@@ -43,7 +43,7 @@ public class FlowPoller {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlowPoller.class);
 
     public FlowPoller() {
-        this.client = getAppflow();
+        this.client = ServiceProvider.getAppflow();
     }
 
     /**

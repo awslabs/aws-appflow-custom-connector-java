@@ -1,7 +1,7 @@
 /*
  * -
  * * #%L
- * * Amazon Appflow Custom Connector SDK.
+ * * Amazon AppFlow Custom Connector SDK.
  * *
  * %%
  * Copyright (C) 2021 Amazon Web Services

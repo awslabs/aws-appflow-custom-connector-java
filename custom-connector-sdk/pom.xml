@@ -2,7 +2,7 @@
 <!--
 ~ -
 ~ ~ #%L
-~ ~ Amazon Appflow Custom Connector SDK.
+~ ~ Amazon AppFlow Custom Connector SDK.
 ~ ~
 ~ %%
 ~ Copyright (C) 2021 Amazon Web Services
@@ -28,16 +28,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>aws-appflow-custom-connector</artifactId>
-        <groupId>com.amazonaws</groupId>
+        <groupId>software.amazon.appflow</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.amazonaws</groupId>
     <artifactId>aws-custom-connector-sdk</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>Amazon Appflow Custom Connector SDK</name>
 
     <organization>
         <name>Amazon Web Services</name>
@@ -56,8 +52,8 @@
 
     <properties>
         <log4j.version>2.17.1</log4j.version>
-        <secretsmanager.version>1.0.0</secretsmanager.version>
-        <json.version>20180130</json.version>
+        <secretsmanager.version>1.0.1</secretsmanager.version>
+        <json.version>20211205</json.version>
     </properties>
 
     <dependencies>
@@ -75,11 +71,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j18-impl</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-lambda-java-log4j2</artifactId>
-            <version>${aws-lambda-java-log4j2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws.secretsmanager</groupId>

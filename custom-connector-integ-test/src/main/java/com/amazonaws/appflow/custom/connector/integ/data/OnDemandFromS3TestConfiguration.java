@@ -1,6 +1,6 @@
 /*-
  * #%L
- * custom-connector-integ-test
+ * aws-custom-connector-integ-test
  * %%
  * Copyright (C) 2021 Amazon Web Services
  * %%
@@ -17,36 +17,42 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
  * Refer to sample-test-config.json
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableTestConfiguration.class)
-@JsonSerialize(as = ImmutableTestConfiguration.class)
-public interface TestConfiguration {
+@JsonDeserialize(as = ImmutableOnDemandFromS3TestConfiguration.class)
+@JsonSerialize(as = ImmutableOnDemandFromS3TestConfiguration.class)
+public interface OnDemandFromS3TestConfiguration {
+    Optional<String> testName();
 
-    Optional<String> resourcePrefix();
+    Optional<String> apiVersion();
 
-    List<CustomConnectorConfiguration> customConnectorConfigurations();
+    Optional<String> profileName();
 
-    List<CustomConnectorProfileConfiguration> customConnectorProfileConfigurations();
+    String entityName();
 
-    List<OnDemandToS3TestConfiguration> onDemandToS3TestConfigurations();
+    String flowName();
 
-    List<OnDemandFromS3TestConfiguration> onDemandFromS3TestConfigurations();
+    Optional<List<String>> idFieldNames();
 
-    List<ListConnectorEntitiesTestConfiguration> listConnectorEntitiesTestConfigurations();
+    String writeOperationType();
 
-    List<DescribeConnectorEntityTestConfiguration> describeConnectorEntityTestConfigurations();
+    Optional<Integer> flowTimeout();
 
-    TestBucketConfiguration testBucketConfiguration();
+    Optional<String> sourceDataFile();
+
+    Optional<String> dataGeneratorClassName();
+
+    Optional<Map<String, String>> destinationRuntimeSettings();
 }

@@ -1,7 +1,7 @@
 /*
  * -
  *  * #%L
- * * Amazon Appflow Custom Connector SDK.
+ * * Amazon AppFlow Custom Connector SDK.
  * *
  * %%
  * Copyright (C) 2021 Amazon Web Services
@@ -67,7 +67,6 @@ public abstract class BaseLambdaConnectorHandler implements RequestStreamHandler
 
     @Override
     public void handleRequest(final InputStream inputStream, final OutputStream outputStream, final Context context) {
-        //TODO :: Adding Lambda LOGGER for now. Need to think more for logging.
         final LambdaLogger lambdaLogger = context.getLogger();
         try (ConnectorRequest connectorRequest = objectMapper.readValue(inputStream, ConnectorRequest.class)) {
             lambdaLogger.log("Handling request for requestType: " + connectorRequest.getClass().getName());

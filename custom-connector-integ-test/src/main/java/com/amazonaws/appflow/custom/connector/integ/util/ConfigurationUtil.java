@@ -17,12 +17,12 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.util;
+package com.amazonaws.appflow.custom.connector.integ.util;
 
+import com.amazonaws.appflow.custom.connector.integ.data.TestConfiguration;
 import com.amazonaws.services.appflow.model.DescribeConnectorEntityResult;
 import com.amazonaws.services.appflow.model.DescribeConnectorResult;
 import com.amazonaws.services.appflow.model.ListConnectorEntitiesResult;
-import com.amzonaws.appflow.custom.connector.integ.data.TestConfiguration;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;

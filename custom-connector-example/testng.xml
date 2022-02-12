@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Practice Suite">
     <parameter name="testConfig" value="test-file.json"/>
-    <test name="Appflow Custom Connector Tests">
+    <test name="AppFlow Custom Connector Tests">
         <classes>
-            <class name="com.amzonaws.appflow.custom.connector.integ.tests.BasicCustomConnectorTestCases"/>
-            <class name="com.amzonaws.appflow.custom.connector.integ.tests.CleanupTest"/>
+            <class name="com.amazonaws.appflow.custom.connector.integ.tests.BasicCustomConnectorTestCases"/>
+            <class name="com.amazonaws.appflow.custom.connector.integ.tests.CleanupTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

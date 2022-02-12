@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>aws-appflow-custom-connector</artifactId>
-        <groupId>com.amazonaws</groupId>
+        <groupId>software.amazon.appflow</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -15,10 +15,14 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <log4j.version>2.17.1</log4j.version>
-        <testng.version>7.0.0</testng.version>
-        <fasterxml.jackson.version>2.12.6</fasterxml.jackson.version>
+        <testng.version>7.5</testng.version>
+        <fasterxml.jackson.version>2.13.1</fasterxml.jackson.version>
         <aws-cdk.version>1.89.0</aws-cdk.version>
         <aws-sdk.version>1.12.151</aws-sdk.version>
+        <guava.version>31.0.1-jre</guava.version>
+        <aws-custom-connector-sdk.version>1.0</aws-custom-connector-sdk.version>
+        <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
+        <log4j2-cachefile-transformer.version>2.8.1</log4j2-cachefile-transformer.version>
     </properties>
 
     <dependencies>
@@ -38,9 +42,9 @@
             <version>${log4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.amazonaws</groupId>
+            <groupId>software.amazon.appflow</groupId>
             <artifactId>aws-custom-connector-sdk</artifactId>
-            <version>1.0</version>
+            <version>${aws-custom-connector-sdk.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
@@ -78,7 +82,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>29.0-jre</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -92,7 +96,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>${maven-shade-plugin.version}</version>
                 <configuration>
                     <shadedArtifactAttached>true</shadedArtifactAttached>
                     <filters>
@@ -116,7 +120,7 @@
                     <dependency>
                         <groupId>com.github.edwgiz</groupId>
                         <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-                        <version>2.8.1</version>
+                        <version>${log4j2-cachefile-transformer.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>

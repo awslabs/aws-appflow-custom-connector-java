@@ -38,7 +38,7 @@ single testng.xml file which references other testng.xml files.
 ```
  <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-    <suite name="Appflow Custom Connector Suite"  > 
+    <suite name="AppFlow Custom Connector Suite"  > 
             <suite-files>
                    <suite-file path="./connector1.xml" />
                    <suite-file path="./connector2.xml" />
@@ -82,7 +82,7 @@ A base configuration file can be found in the current directory.
 The configuration file requires several AWS resources to already exist in your account. The purpose of these
 resources is described in the the sample-test-config.json file.
 
-1. A S3 bucket with Appflow bucket policy.
+1. A S3 bucket with AppFlow bucket policy.
 2. A Secrets Manager secret for each set of credentials.
 3. A Lambda custom connector.
 
@@ -114,12 +114,12 @@ The test cases are written using TestNG. The test cases can be run using a testn
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Appflow Custom Connector Suite">
+<suite name="AppFlow Custom Connector Suite">
     <parameter name="testConfig" value="test-file-2.json"/>
-    <test name="Appflow Custom Connector Tests">
+    <test name="AppFlow Custom Connector Tests">
         <classes>
-            <class name="com.amzonaws.appflow.custom.connector.integ.tests.BasicCustomConnectorTestCases"/>
-            <class name="com.amzonaws.appflow.custom.connector.integ.tests.CleanupTest"/>
+            <class name="com.amazonaws.appflow.custom.connector.integ.tests.BasicCustomConnectorTestCases"/>
+            <class name="com.amazonaws.appflow.custom.connector.integ.tests.CleanupTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
@@ -163,7 +163,7 @@ config.
 import org.testng.annotations.Test;
 
 public class MyConnectorIntegTest extends BasicCustomConnectorTestCases
-package com.amzonaws.appflow.custom.connector.integ.tests;
+package com.amazonaws.appflow.custom.connector.integ.tests;
 
 import com.amazonaws.services.appflow.model.ConnectorType;
 import com.amazonaws.services.appflow.model.ListConnectorEntitiesRequest;

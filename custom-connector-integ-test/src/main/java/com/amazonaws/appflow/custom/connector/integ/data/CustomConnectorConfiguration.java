@@ -17,36 +17,25 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
-import com.amazonaws.services.appflow.model.OAuth2Properties;
-import com.amzonaws.appflow.custom.connector.integ.providers.AuthenticationType;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
-import java.util.Map;
 import java.util.Optional;
 
 /**
  * Refer to sample-test-config.json
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableCustomConnectorProfileConfiguration.class)
-@JsonSerialize(as = ImmutableCustomConnectorProfileConfiguration.class)
-public interface CustomConnectorProfileConfiguration {
+@JsonDeserialize(as = ImmutableCustomConnectorConfiguration.class)
+@JsonSerialize(as = ImmutableCustomConnectorConfiguration.class)
+public interface CustomConnectorConfiguration {
 
-    Optional<String> secretsManagerArn();
+    String lambdaArn();
 
     String name();
 
-    Optional<OAuth2Properties> oAuth2Properties();
-
-    Optional<String> connectorName();
-
-    Optional<Map<String, String>> profileProperties();
-
-    AuthenticationType authenticationType();
-
-    Optional<String> defaultApiVersion();
+    Optional<String> validationFileName();
 }

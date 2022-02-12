@@ -1,6 +1,6 @@
 /*-
  * #%L
- * aws-custom-connector-integ-test
+ * custom-connector-integ-test
  * %%
  * Copyright (C) 2021 Amazon Web Services
  * %%
@@ -17,8 +17,9 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.data;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
+import com.amazonaws.appflow.custom.connector.model.credentials.Credentials;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
@@ -26,19 +27,16 @@ import org.immutables.value.Value;
 import java.util.Optional;
 
 /**
- * Refer to sample-test-config.json
+ * Contains the test credentials required to create the connector profile.
  */
 @Value.Immutable
-@JsonDeserialize(as = ImmutableListConnectorEntitiesTestConfiguration.class)
-@JsonSerialize(as = ImmutableListConnectorEntitiesTestConfiguration.class)
-public interface ListConnectorEntitiesTestConfiguration {
-    Optional<String> entitiesPath();
+@JsonDeserialize(as = ImmutableTestCredentials.class)
+@JsonSerialize(as = ImmutableTestCredentials.class)
+public interface TestCredentials {
 
-    Optional<String> validationFileName();
+    Optional<Credentials> credentials();
 
-    Optional<String> profileName();
+    Optional<String> clientId();
 
-    Optional<String> testName();
-
-    Optional<String> apiVersion();
+    Optional<String> clientSecret();
 }

@@ -17,8 +17,10 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.tests;
+package com.amazonaws.appflow.custom.connector.integ.tests;
 
+import com.amazonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider;
+import com.amazonaws.appflow.custom.connector.integ.providers.ServiceProvider;
 import com.amazonaws.services.appflow.AmazonAppflow;
 import com.amazonaws.services.appflow.model.ConnectorDetail;
 import com.amazonaws.services.appflow.model.ConnectorProfile;
@@ -45,11 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.amzonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider.INTEG_CONNECTOR;
-import static com.amzonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider.INTEG_FLOW;
-import static com.amzonaws.appflow.custom.connector.integ.providers.ResourceInfoProvider.INTEG_PROFILE;
-import static com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider.getAppflow;
-import static com.amzonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
+import static com.amazonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
 
 /**
  * Tests that run after all other test cases.
@@ -65,7 +63,7 @@ public class CleanupTest {
 
     @BeforeSuite
     public void setUp(final ITestContext iTestContext) throws IOException {
-        this.amazonAppflow = getAppflow();
+        this.amazonAppflow = ServiceProvider.getAppflow();
         resourcePrefix  = getTestConfiguration(iTestContext).resourcePrefix().orElse("");
     }
 
@@ -80,7 +78,7 @@ public class CleanupTest {
                     amazonAppflow.describeConnectorProfiles(request);
             profiles.putAll(describeConnectorProfilesResult.getConnectorProfileDetails()
                     .stream()
-                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getConnectorProfileName(), resourcePrefix + INTEG_PROFILE)))
+                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getConnectorProfileName(), resourcePrefix + ResourceInfoProvider.INTEG_PROFILE)))
                     .collect(Collectors.toMap(ConnectorProfile::getConnectorProfileName, cp -> cp)));
             nextToken = describeConnectorProfilesResult.getNextToken();
         } while (nextToken != null);
@@ -101,7 +99,7 @@ public class CleanupTest {
                     amazonAppflow.listConnectors(request);
             connectorDetails.putAll(result.getConnectors()
                     .stream()
-                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getConnectorLabel(), resourcePrefix + INTEG_CONNECTOR)))
+                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getConnectorLabel(), resourcePrefix + ResourceInfoProvider.INTEG_CONNECTOR)))
                     .collect(Collectors.toMap(ConnectorDetail::getConnectorLabel, cp -> cp)));
             nextToken = result.getNextToken();
         } while (nextToken != null);
@@ -122,7 +120,7 @@ public class CleanupTest {
                     amazonAppflow.listFlows(request);
             connectorDetails.putAll(result.getFlows()
                     .stream()
-                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getFlowName(), resourcePrefix + INTEG_FLOW)))
+                    .filter(cp -> (StringUtils.startsWithIgnoreCase(cp.getFlowName(), resourcePrefix + ResourceInfoProvider.INTEG_FLOW)))
                     .collect(Collectors.toMap(FlowDefinition::getFlowName, cp -> cp)));
             nextToken = result.getNextToken();
         } while (nextToken != null);

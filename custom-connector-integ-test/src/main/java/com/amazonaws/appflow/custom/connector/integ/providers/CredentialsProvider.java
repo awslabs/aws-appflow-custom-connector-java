@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
 import com.amazonaws.services.appflow.model.ApiKeyCredentials;
 import com.amazonaws.services.appflow.model.BasicAuthCredentials;
@@ -29,12 +29,11 @@ import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueRequest;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueResult;
 
-import com.amzonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import static com.amzonaws.appflow.custom.connector.integ.providers.ServiceProvider.getSecretsManager;
-import static com.amzonaws.appflow.custom.connector.integ.util.ConfigurationUtil.OBJECT_MAPPER;
+import static com.amazonaws.appflow.custom.connector.integ.util.ConfigurationUtil.OBJECT_MAPPER;
 
 /**
  * Responsible for providing user credentials from SecretsManager.
@@ -55,7 +54,7 @@ public final class CredentialsProvider {
         if (profileConfiguration.authenticationType().equals(AuthenticationType.NO_AUTH) || !profileConfiguration.secretsManagerArn().isPresent()) {
             return customConnectorProfileCredentials;
         }
-        AWSSecretsManager secretsManager = getSecretsManager();
+        AWSSecretsManager secretsManager = ServiceProvider.getSecretsManager();
         GetSecretValueResult secretValueResult = secretsManager.getSecretValue(new GetSecretValueRequest()
                 .withSecretId(profileConfiguration.secretsManagerArn().get()));
         try {

@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.tests;
+package com.amazonaws.appflow.custom.connector.integ.tests;
 
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
@@ -25,7 +25,7 @@ import org.testng.annotations.DataProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.amzonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
+import static com.amazonaws.appflow.custom.connector.integ.util.ConfigurationUtil.getTestConfiguration;
 
 public class TestConfigurationDataProvider {
 

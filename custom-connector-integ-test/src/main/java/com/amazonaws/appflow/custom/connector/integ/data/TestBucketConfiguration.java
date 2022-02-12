@@ -17,17 +17,21 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.util;
+package com.amazonaws.appflow.custom.connector.integ.data;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
+/**
+ * Refer to sample-test-config.json
+ */
 @Value.Immutable
-public interface PollingConfiguration {
-    int maxPollTimeS();
+@JsonDeserialize(as = ImmutableTestBucketConfiguration.class)
+@JsonSerialize(as = ImmutableTestBucketConfiguration.class)
+public interface TestBucketConfiguration {
 
-    int timeBetweenPollsS();
+    String bucketName();
 
-    String executionId();
-
-    String flowName();
+    String bucketPrefix();
 }

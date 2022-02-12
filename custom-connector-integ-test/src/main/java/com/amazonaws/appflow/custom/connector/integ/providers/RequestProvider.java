@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package com.amzonaws.appflow.custom.connector.integ.providers;
+package com.amazonaws.appflow.custom.connector.integ.providers;
 
 import com.amazonaws.services.appflow.model.ConnectionMode;
 import com.amazonaws.services.appflow.model.ConnectorOperator;
@@ -53,19 +53,19 @@ import com.amazonaws.services.appflow.model.Task;
 import com.amazonaws.services.appflow.model.TaskType;
 import com.amazonaws.services.appflow.model.TriggerConfig;
 import com.amazonaws.services.appflow.model.TriggerType;
-import com.amzonaws.appflow.custom.connector.integ.data.CustomConnectorConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.DescribeConnectorEntityTestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.ListConnectorEntitiesTestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.OnDemandFromS3TestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.OnDemandToS3TestConfiguration;
-import com.amzonaws.appflow.custom.connector.integ.data.TestBucketConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.CustomConnectorConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.CustomConnectorProfileConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.DescribeConnectorEntityTestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.ListConnectorEntitiesTestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.OnDemandFromS3TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.OnDemandToS3TestConfiguration;
+import com.amazonaws.appflow.custom.connector.integ.data.TestBucketConfiguration;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.amzonaws.appflow.custom.connector.integ.providers.CredentialsProvider.getCustomConnectorProfileCredentials;
+import static com.amazonaws.appflow.custom.connector.integ.providers.CredentialsProvider.getCustomConnectorProfileCredentials;
 
 /**
  * Utility class used to Generate Requests for the testcases.

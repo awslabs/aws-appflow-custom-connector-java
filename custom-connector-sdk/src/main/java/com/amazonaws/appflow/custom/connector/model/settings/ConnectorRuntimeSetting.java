@@ -1,7 +1,7 @@
 /*
  * -
  *  * #%L
- * * Amazon Appflow Custom Connector SDK.
+ * * Amazon AppFlow Custom Connector SDK.
  * *
  * %%
  * Copyright (C) 2021 Amazon Web Services
@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * Represents the setting that the connector needs at runtime and the input will be provided by the Appflow user. For
+ * Represents the setting that the connector needs at runtime and the input will be provided by the AppFlow user. For
  * eg. instanceUrl, maxParallelism etc.
  */
 @Value.Immutable

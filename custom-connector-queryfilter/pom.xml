@@ -2,7 +2,7 @@
 <!--
 ~ -
 ~ ~ #%L
-~ ~ Amazon Appflow Custom Connector SDK.
+~ ~ Amazon AppFlow Custom Connector SDK.
 ~ ~
 ~ %%
 ~ Copyright (C) 2021 Amazon Web Services
@@ -28,16 +28,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>aws-appflow-custom-connector</artifactId>
-        <groupId>com.amazonaws</groupId>
+        <groupId>software.amazon.appflow</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.amazonaws</groupId>
     <artifactId>aws-custom-connector-queryfilter</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>aws-custom-connector-queryfilter</name>
 
     <organization>
         <name>Amazon Web Services</name>
