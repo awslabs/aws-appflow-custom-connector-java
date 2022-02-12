@@ -25,12 +25,12 @@
 package com.amazonaws.appflow.custom.connector.model;
 
 /**
- * Enum of error codes.
+ * Collection of all normalized error codes for returning errors back to  AppFlow.
  */
 public enum ErrorCode {
     /**
      * Invalid arguments provided as input/HttpStatus 400/413 from application/Bad Request exception from Application.
-     * for e.g QueryURI too large, write request payload too large etc.
+     * for example QueryURI too large, write request payload too large etc.
      */
     InvalidArgument,
 
@@ -45,7 +45,8 @@ public enum ErrorCode {
     AccessDenied,
 
     /**
-     * The request to the underlying application timed out/HttpStatus 408 from Application.
+     * The request to the underlying application timed out/HttpStatus 408 from Application/
+     * HttpClient timeout while sending request.
      */
     RequestTimeout,
 
@@ -72,7 +73,7 @@ public enum ErrorCode {
     ServerError,
 
     /**
-     * Unknown Error from the application. Use this Error Code only when you are not able to use the
+     * Unknown Error from the Application. Use this ErrorCode only when you are not able to use the
      * other specific error codes.
      */
     UnknownError
