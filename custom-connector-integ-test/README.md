@@ -101,9 +101,9 @@ The integration test package must be included in your dependencies.
 e.g. If you're using Maven. You can add this to your pom.xml.
 ```
         <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-custom-connector-integ-test</artifactId>
-            <version>${aws-custom-connector-integ-test.version}</version>
+             <groupId>software.amazon.appflow</groupId>
+             <artifactId>aws-custom-connector-integ-test</artifactId>
+             <version>1.0</version>
         </dependency>
 ```
 
