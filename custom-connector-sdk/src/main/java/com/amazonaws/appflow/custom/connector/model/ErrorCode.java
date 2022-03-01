@@ -79,7 +79,7 @@ public enum ErrorCode {
     UnknownError,
 
     /**
-     * Specifies that the connector is failed to write all the records to the Application.
+     * Specifies that the connector encountered failure, for some records, while writing to the application.
      */
     PartialWriteFailure
 }

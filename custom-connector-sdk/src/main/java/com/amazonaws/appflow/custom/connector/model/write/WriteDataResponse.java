@@ -40,7 +40,8 @@ import java.util.List;
 @JsonDeserialize(as = ImmutableWriteDataResponse.class)
 public interface WriteDataResponse {
     /**
-     * Specifies if the operation is successful or not. In case of partial failures, this should be set as false.
+     * Specifies if the operation is successful or not. In case of partial failure,
+     * this flag should be set to false and the error code should be set to PartialWriteFailure.
      */
     boolean isSuccess();
 
