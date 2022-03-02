@@ -67,7 +67,9 @@ public interface WriteDataRequest extends ConnectorRequest {
     List<String> records();
 
     /**
-     * Write all or none if any of the entity records error out.
+     * Specifies that the WRITE operation must fail immediately after encountering the first instance of failure
+     * when writing a batch of records to the Application. Alternatively, if the application supports the allOrNone
+     * behavior the connector can pass on the flag to the application.
      */
     @Nullable
     Boolean allOrNone();

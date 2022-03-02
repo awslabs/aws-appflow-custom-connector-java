@@ -25,12 +25,12 @@
 package com.amazonaws.appflow.custom.connector.model;
 
 /**
- * Collection of all normalized error codes for returning errors back to  AppFlow.
+ * Collection of all normalized error codes for returning errors back to AppFlow.
  */
 public enum ErrorCode {
     /**
      * Invalid arguments provided as input/HttpStatus 400/413 from application/Bad Request exception from Application.
-     * for example QueryURI too large, write request payload too large etc.
+     * For example QueryURI too large, write request payload too large etc.
      */
     InvalidArgument,
 
@@ -76,5 +76,10 @@ public enum ErrorCode {
      * Unknown Error from the Application. Use this ErrorCode only when you are not able to use the
      * other specific error codes.
      */
-    UnknownError
+    UnknownError,
+
+    /**
+     * Specifies that the connector encountered failure, for some records, while writing to the application.
+     */
+    PartialWriteFailure
 }
