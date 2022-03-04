@@ -84,7 +84,7 @@ public enum ErrorCode {
     PartialWriteFailure,
 
     /**
-     * Specifies that the connector is unable to find the resource like AWS SecretManagerARN etc.
+     * Specifies that the connector is unable to find resource like AWS SecretManagerARN etc.
      */
     ResourceNotFoundError
 }
