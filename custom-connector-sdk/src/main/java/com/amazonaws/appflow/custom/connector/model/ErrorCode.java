@@ -81,5 +81,10 @@ public enum ErrorCode {
     /**
      * Specifies that the connector encountered failure, for some records, while writing to the application.
      */
-    PartialWriteFailure
+    PartialWriteFailure,
+
+    /**
+     * Specifies that the connector is unable to find the resource like AWS SecretManagerARN etc.
+     */
+    ResourceNotFoundError
 }

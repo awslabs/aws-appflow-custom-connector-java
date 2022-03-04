@@ -31,7 +31,7 @@
     <groupId>software.amazon.appflow</groupId>
     <artifactId>aws-appflow-custom-connector</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Amazon AppFlow Custom Connector SDK</name>
     <url>https://github.com/awslabs/aws-appflow-custom-connector-java</url>
     <description>AppFlow Custom Connector SDK enables customers and third party developers to build custom source
