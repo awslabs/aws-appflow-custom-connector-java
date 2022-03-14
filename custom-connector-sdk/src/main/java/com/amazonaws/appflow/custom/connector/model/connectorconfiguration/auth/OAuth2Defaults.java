@@ -60,4 +60,9 @@ public interface OAuth2Defaults {
      * OAuth2 Grant types supported by connector.
      */
     List<OAuth2GrantType> oAuth2GrantTypesSupported();
+
+    /**
+     * OAuth2 custom parameters needed by the connector.
+     */
+    List<OAuth2CustomParameter> customOauthParameters();
 }
