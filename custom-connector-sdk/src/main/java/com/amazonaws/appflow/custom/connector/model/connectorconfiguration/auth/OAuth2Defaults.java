@@ -64,5 +64,5 @@ public interface OAuth2Defaults {
     /**
      * OAuth2 custom parameters needed by the connector.
      */
-    List<OAuth2CustomParameter> customOauthParameters();
+    List<OAuth2CustomParameter> oauth2CustomProperties();
 }
