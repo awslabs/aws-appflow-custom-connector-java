@@ -47,6 +47,8 @@ public interface OAuth2Defaults {
 
     /**
      * Token URLs. Required for both OAuth2GrantType - AUTHORIZATION_CODE and CLIENT_CREDENTIALS.
+     * for the cases when token url is required from the AppFlow users please use template url
+     * in the format as : https://{{YOUR_SUBDOMAIN}}.auth.marketingcloudapis.com/v2/token
      */
     List<String> tokenURL();
 
