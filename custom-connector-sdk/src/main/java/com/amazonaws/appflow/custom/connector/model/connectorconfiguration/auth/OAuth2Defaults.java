@@ -47,13 +47,25 @@ public interface OAuth2Defaults {
 
     /**
      * Token URLs. Required for both OAuth2GrantType - AUTHORIZATION_CODE and CLIENT_CREDENTIALS.
-     * for the cases when token url is required from the AppFlow users please use template url
-     * in the format as : https://{{YOUR_SUBDOMAIN}}.auth.marketingcloudapis.com/v2/token
+     * This URL can be in two format - Static and Template based where we need the input from the Customer to build      * the complete URL.
+     * For Static URLs you can add the URL directly to this list like 
+     *  - https://mc17nm2rn5qghzw-lk5r70cv2prm.auth.marketingcloudapis.com/v2/token.
+     * And for template based URLs, you can use this format
+     *  - https://{{SALESFORCE_SUBDOMAIN}}.auth.marketingcloudapis.com/v2/token where the SALESFORCE_SUBDOMAIN 
+     * will be the user input and AppFlow will ask the customers to provide its value while 
+     * configuring the connector profile.
      */
     List<String> tokenURL();
 
     /**
      * Auth URLs. Required for OAuth2GrantType - AUTHORIZATION_CODE.
+     * This URL can be in two format - Static and Template based where we need the input from the Customer to build      * the complete URL.
+     * For Static URLs you can add the URL directly to this list like
+     *  - https://login.salesforce.com/services/oauth2/token.
+     * And for template based URLs, you can use this format
+     *  - https://{{SALESFORCE_SUBDOMAIN}}.auth.marketingcloudapis.com/v2/token where the SALESFORCE_SUBDOMAIN
+     * will be the user input and AppFlow will ask the customers to provide its value while
+     * configuring the connector profile.
      */
     @Nullable
     List<String> authURL();
