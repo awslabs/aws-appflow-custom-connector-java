@@ -47,7 +47,7 @@ public interface OAuth2Defaults {
 
     /**
      * Token URLs. Required for both OAuth2GrantType - AUTHORIZATION_CODE and CLIENT_CREDENTIALS.
-     * This URL can be in two format - Static and Template based where we need the input from the Customer to build      * the complete URL.
+     * This URL can be in two format - Static and Template based where we need the input from the Customer to build the complete URL.
      * For Static URLs you can add the URL directly to this list like 
      *  - https://mc17nm2rn5qghzw-lk5r70cv2prm.auth.marketingcloudapis.com/v2/token.
      * And for template based URLs, you can use this format
@@ -59,7 +59,7 @@ public interface OAuth2Defaults {
 
     /**
      * Auth URLs. Required for OAuth2GrantType - AUTHORIZATION_CODE.
-     * This URL can be in two format - Static and Template based where we need the input from the Customer to build      * the complete URL.
+     * This URL can be in two format - Static and Template based where we need the input from the Customer to build the complete URL.
      * For Static URLs you can add the URL directly to this list like
      *  - https://login.salesforce.com/services/oauth2/token.
      * And for template based URLs, you can use this format
