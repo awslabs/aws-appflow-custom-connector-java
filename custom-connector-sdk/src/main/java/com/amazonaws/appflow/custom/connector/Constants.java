@@ -32,7 +32,7 @@ public final class Constants {
 
     //ApiKeyCredentials Constants
     public static final String API_KEY = "apiKey";
-    public static final String SECRET_KEY = "secretKey";
+    public static final String SECRET_KEY = "apiSecretKey";
 
     //OAuth2Credentials Constants
     public static final String ACCESS_TOKEN = "accessToken";

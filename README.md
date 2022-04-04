@@ -204,6 +204,17 @@ invoke it again for incremental data pulls using the query_data function.
 task definitions and prepares the payload as per the entity shape of the destination connector and hands it over to the
 destination connector by invoking the `writeData` function.
 
+## SDK Restrictions
+- For `queryData` and `writeData` calls, AppFlow expects the connectors to respond within 30 seconds.
+  If the Lambda invocation takes more than 30 seconds, then that will result in a timeout and connector error will be surfaced to the customer. 
+  For the use cases where the query execution might take more than 30 seconds, consider reducing the page sizes so that each page can be fetched under 30 seconds.
+- For `describeConnectorConfiguration`, `validateConnectorRuntimeSettings`, `validateCredentials`, `describeEntity` and `listEntities` calls,
+  AppFlow expects the connectors to respond within 10 seconds. If the Lambda invocation takes more than 30 seconds then that will result in a timeout and connector error will be surfaced to the customer.
+- Response size should not be more than 6 MB (Lambda memory limit). If the response is more than 6 MB, consider reducing the page size.  
+  Alternatively, when Lambda errors out because of response exceeding the limit, retry the query with smaller page size. This approach could result in a timeout because of the 30 seconds overall limit.
+- SDK supports only structured data where the AppFlow expects the connector has defined entities and each entity has metadata associated with it.
+- SDK supports standard `BasicAuth`, `ApiKey` and 2 legged (client app credentials only) and 3 legged (including user grant step) `OAuth2` schemes. For other Authentication mechanism,
+Please use the `CustomAuth` supported by SDK where you have flexibility to choose the parameters.
 
 ## Connector Developer Experience
 
