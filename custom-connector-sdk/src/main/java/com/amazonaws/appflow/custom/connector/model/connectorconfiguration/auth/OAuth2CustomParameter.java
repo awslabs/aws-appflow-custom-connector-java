@@ -32,7 +32,7 @@ import java.util.List;
 @Value.Immutable
 @JsonSerialize(as = ImmutableOAuth2CustomParameter.class)
 @JsonDeserialize(as = ImmutableOAuth2CustomParameter.class)
-public class OAuth2CustomParameter {
+public interface OAuth2CustomParameter {
     /**
      * Unique identifier for custom Oauth2 parameter.
      */

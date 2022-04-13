@@ -81,5 +81,6 @@ public interface OAuth2Defaults {
      *  In case of 3 legged OAuth2 AppFlow have clientId and scope defined as the default parameter for AUTH_URL to generate the Authorization code.
      *  Connector developer doesn't have to define clientId and scope as OAuth2Custom Parameter for AUTH_URL.
      */
+    @Nullable
     List<OAuth2CustomParameter> oauth2CustomProperties();
 }
