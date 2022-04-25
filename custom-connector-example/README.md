@@ -233,7 +233,7 @@ You will need the following information when configuring this custom connector i
 * **Client Id**: Log in to your Salesforce org as an Admin and open *Apps* -> *App Manager*, then select the connected app that you created. Use the "Consumer Key" as the "Client Id".
 * **Client Secret**: Log in to your Salesforce org as an Admin and open *Apps* -> *App Manager*, then select the connected app that you created. Find the "Consumer Secret" under the OAuth settings.
 * **Salesforce Instance URL**: Log in to your Salesforce org as an Admin and open *Company Settings* -> *My Domain*. Enter "https://" before the domain URL for this field. e.g. "https://sfdc-test-ed.my.salesforce.com"
-* **Salesforce API version**: Log in to your Salesforce org as an Admin and open 'Setup' -> 'Apex Classes'. Then click 'New' and 'Version Settings'. There you can see your Salesforce API version. **Be sure to prepend "v" before the  version number** in this field. e.g. "v54.0"
+* **Salesforce API version**: Log in to your Salesforce org as an Admin and open *Setup* -> *Apex Classes*. Then click *New* and *Version Settings*. There you can see your Salesforce API version. **Be sure to prepend "v" before the  version number** in this field. e.g. "v54.0"
 
 ### Installation
 
