@@ -56,7 +56,7 @@ public final class SalesforceConnectorConfiguration {
                 .dataType(ConnectorRuntimeSettingDataType.String)
                 .required(true)
                 .label("Salesforce Instance URL")
-                .description("URL of the instance where user wants to tun the operations.")
+                .description("URL of the instance where user wants to run the operations.")
                 .scope(ConnectorRuntimeSettingScope.CONNECTOR_PROFILE)
                 .build();
 
@@ -65,7 +65,7 @@ public final class SalesforceConnectorConfiguration {
                 .dataType(ConnectorRuntimeSettingDataType.String)
                 .required(true)
                 .label("Salesforce API version")
-                .description("Salesforce API version to use.")
+                .description("Salesforce API version to use. (e.g. v54.0)")
                 .scope(ConnectorRuntimeSettingScope.CONNECTOR_PROFILE)
                 .build();
 
