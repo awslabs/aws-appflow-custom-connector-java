@@ -228,7 +228,27 @@ To retrieve the client ID and client secret for use in your OAuth flow, you can 
 For more information on connected apps in Salesforce, see Connected Apps (https://help.salesforce.com/articleView?id=connected_app_overview.html)
 in the Salesforce documentation.
 
-### How to use this Sample Connector in Amazon AppFlow?
+You will need the following information when configuring this custom connector in AppFlow:
+
+* **Client Id**: Log in to your Salesforce org as an Admin and open *Apps* -> *App Manager*, then select the connected app that you created. Use the "Consumer Key" as the "Client Id".
+* **Client Secret**: Log in to your Salesforce org as an Admin and open *Apps* -> *App Manager*, then select the connected app that you created. Find the "Consumer Secret" under the OAuth settings.
+* **Salesforce Instance URL**: Log in to your Salesforce org as an Admin and open *Company Settings* -> *My Domain*. Enter "https://" before the domain URL for this field. e.g. "https://sfdc-test-ed.my.salesforce.com"
+* **Salesforce API version**: Log in to your Salesforce org as an Admin and open *Setup* -> *Apex Classes*. Then click *New* and *Version Settings*. There you can see your Salesforce API version. **Be sure to prepend "v" before the  version number** in this field. e.g. "v54.0"
+
+### Installation
+
+Here's how to register this connector in AppFlow:
+
+1. In the IAM policy defined in [template.yml](https://github.com/awslabs/aws-appflow-custom-connector-java/blob/f98b7e6e7364a93a21c7a47da1b50398576303f3/custom-connector-example/template.yml#L19), specify the custom connector name that you plan to use when you register the connector in AppFlow.
+
+2. Deploy the Lambda and IAM resources for your connector by using the `deploy.sh` script provided in the [custom-connector-tools](https://github.com/awslabs/aws-appflow-custom-connector-java/tree/main/custom-connector-tools) package. e.g:
+
+```bash
+cd aws-appflow-custom-connector-java/custom-connector-example/
+../custom-connector-tools/deploy.sh us-west-2 my_bucket my_stack_name
+```
+
+3. Navigate to the AppFlow console, click the "Register new connector" button, and following the instructions.
 
 For more information on using the connector, please refer to the Getting Started Guide in the README.md in root directory.
 
