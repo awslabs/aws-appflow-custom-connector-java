@@ -26,11 +26,13 @@ package com.amazonaws.appflow.custom.connector.model.settings;
 
 import com.amazonaws.appflow.custom.connector.model.ConnectorRequest;
 import com.amazonaws.appflow.custom.connector.model.ConnectorRequestStyle;
+import com.amazonaws.appflow.custom.connector.model.credentials.AuthenticationType;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 /**
@@ -52,4 +54,7 @@ public interface ValidateConnectorRuntimeSettingsRequest extends ConnectorReques
      * user.
      */
     Map<String, String> connectorRuntimeSettings();
+
+    @Nullable
+    AuthenticationType authenticationType();
 }
