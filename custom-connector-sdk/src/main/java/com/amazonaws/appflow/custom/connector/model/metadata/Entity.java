@@ -48,6 +48,12 @@ public interface Entity {
     boolean hasNestedEntities();
 
     /**
+     * Specifies if the connector entity can be used in destination while creating flow
+     */
+    @Value.Default
+    default boolean hasDestinationSupport() { return true; }
+
+    /**
      * Label of the entity.
      */
     @Nullable
