@@ -50,7 +50,7 @@ public interface Entity {
     /**
      * Specifies if the connector entity can be used in destination while creating flow
      */
-    @Value.Default111
+    @Value.Default
     default boolean hasDestinationSupport() { return true; }
 
     /**
