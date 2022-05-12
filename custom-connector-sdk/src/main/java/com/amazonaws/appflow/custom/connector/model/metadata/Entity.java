@@ -48,10 +48,10 @@ public interface Entity {
     boolean hasNestedEntities();
 
     /**
-     * Specifies if the connector entity can be used in destination while creating flow
+     * Specifies if the connector entity is writable
      */
     @Value.Default
-    default boolean hasDestinationSupport() { return true; }
+    default boolean isWritable() { return true; }
 
     /**
      * Label of the entity.
