@@ -76,6 +76,22 @@ public interface OAuth2Defaults {
     List<OAuth2GrantType> oAuth2GrantTypesSupported();
 
     /**
+     * OAuth2 Content type to use in the token request header. Default: "application/x-www-form-urlencoded"
+     */
+    @Value.Default
+    default OAuth2ContentType oAuth2ContentType() {
+        return OAuth2ContentType.URL_ENCODED;
+    }
+
+    /**
+     * OAuth2 Http method to use for the token request. Default: "POST"
+     */
+    @Value.Default
+    default OAuth2MethodType oAuth2MethodType() {
+        return OAuth2MethodType.HTTP_POST;
+    }
+
+    /**
      * OAuth2 custom parameters needed by the connector.
      *
      *  In case of 3 legged OAuth2 AppFlow have clientId and scope defined as the default parameter for AUTH_URL to generate the Authorization code.
