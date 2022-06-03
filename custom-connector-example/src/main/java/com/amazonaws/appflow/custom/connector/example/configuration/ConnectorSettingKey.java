@@ -33,4 +33,5 @@ public final class ConnectorSettingKey {
 
     public static final String INSTANCE_URL = "instanceUrl";
     public static final String API_VERSION = "api_version";
+    public static final String IS_SANDBOX_ACCOUNT = "IsSandboxAccount";
 }
