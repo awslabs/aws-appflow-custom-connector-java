@@ -68,7 +68,6 @@ public class SalesforceConfigurationHandler extends AbstractSalesforceHandler im
     public ValidateCredentialsResponse validateCredentials(final ValidateCredentialsRequest request) {
         String requestUri = buildSalesforceUserInfoRequest(request);
         ConnectorContext connectorContext = ImmutableConnectorContext.builder()
-                .apiVersion(request.connectorRuntimeSettings().get(API_VERSION))
                 .credentials(request.credentials())
                 .connectorRuntimeSettings(request.connectorRuntimeSettings())
                 .build();
