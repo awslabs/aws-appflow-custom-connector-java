@@ -42,6 +42,7 @@ import java.util.List;
 
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.API_VERSION;
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.INSTANCE_URL;
+import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.IS_SANDBOX_ACCOUNT;
 
 /**
  * Static Configuration for Salesforce connector.
@@ -60,16 +61,16 @@ public final class SalesforceConnectorConfiguration {
                 .scope(ConnectorRuntimeSettingScope.CONNECTOR_PROFILE)
                 .build();
 
-        ConnectorRuntimeSetting apiVersion = ImmutableConnectorRuntimeSetting.builder()
-                .key(API_VERSION)
-                .dataType(ConnectorRuntimeSettingDataType.String)
+        ConnectorRuntimeSetting isSandboxAccount = ImmutableConnectorRuntimeSetting.builder()
+                .key(IS_SANDBOX_ACCOUNT)
+                .dataType(ConnectorRuntimeSettingDataType.Boolean)
                 .required(true)
-                .label("Salesforce API version")
-                .description("Salesforce API version to use. (e.g. v54.0)")
+                .label("Type of salesforce account")
+                .description("Is Salesforce account a sandbox account")
                 .scope(ConnectorRuntimeSettingScope.CONNECTOR_PROFILE)
                 .build();
 
-        return Arrays.asList(instanceUrl, apiVersion);
+        return Arrays.asList(instanceUrl, isSandboxAccount);
     }
 
     public static List<ConnectorModes> getConnectorModes() {
