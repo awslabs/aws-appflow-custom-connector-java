@@ -58,6 +58,7 @@ public interface ConnectorContext {
     /**
      * API version to use. Value will be the API Version supported by Connector as part of Connector Configuration.
      */
+    @Nullable
     String apiVersion();
 
     /**
