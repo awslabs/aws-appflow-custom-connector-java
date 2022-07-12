@@ -77,7 +77,7 @@
 
     <properties>
         <jre.version>1.8</jre.version>
-        <fasterxml.jackson.version>2.13.1</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.13.3</fasterxml.jackson.version>
         <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
         <aws-java-sdk-lambda.version>1.11.993</aws-java-sdk-lambda.version>
         <aws-lambda-java-log4j2.version>1.5.1</aws-lambda-java-log4j2.version>
