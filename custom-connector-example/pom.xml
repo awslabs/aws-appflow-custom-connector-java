@@ -39,7 +39,7 @@
         <aws-custom-connector-sdk.version>1.0.5</aws-custom-connector-sdk.version>
         <aws-custom-connector-queryfilter.version>1.0.3</aws-custom-connector-queryfilter.version>
         <aws-custom-connector-integ-test.version>1.0.3</aws-custom-connector-integ-test.version>
-        <gson.version>2.8.6</gson.version>
+        <gson.version>2.9.0</gson.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <httpclient.version>4.5.13</httpclient.version>
         <httpcore.version>4.4.14</httpcore.version>
