@@ -25,20 +25,23 @@
 package com.amazonaws.appflow.custom.connector.example.handler;
 
 import com.amazonaws.appflow.custom.connector.example.SalesforceResponse;
+import com.amazonaws.appflow.custom.connector.example.client.HttpClient;
 import com.amazonaws.appflow.custom.connector.example.configuration.SalesforceConnectorConfiguration;
 import com.amazonaws.appflow.custom.connector.handlers.ConfigurationHandler;
-import com.amazonaws.appflow.custom.connector.model.ConnectorContext;
 import com.amazonaws.appflow.custom.connector.model.ErrorDetails;
-import com.amazonaws.appflow.custom.connector.model.ImmutableConnectorContext;
 import com.amazonaws.appflow.custom.connector.model.connectorconfiguration.DescribeConnectorConfigurationRequest;
 import com.amazonaws.appflow.custom.connector.model.connectorconfiguration.DescribeConnectorConfigurationResponse;
 import com.amazonaws.appflow.custom.connector.model.connectorconfiguration.ImmutableDescribeConnectorConfigurationResponse;
+import com.amazonaws.appflow.custom.connector.model.credentials.Credentials;
 import com.amazonaws.appflow.custom.connector.model.credentials.ImmutableValidateCredentialsResponse;
+import com.amazonaws.appflow.custom.connector.model.credentials.OAuth2Credentials;
 import com.amazonaws.appflow.custom.connector.model.credentials.ValidateCredentialsRequest;
 import com.amazonaws.appflow.custom.connector.model.credentials.ValidateCredentialsResponse;
 import com.amazonaws.appflow.custom.connector.model.settings.ImmutableValidateConnectorRuntimeSettingsResponse;
 import com.amazonaws.appflow.custom.connector.model.settings.ValidateConnectorRuntimeSettingsRequest;
 import com.amazonaws.appflow.custom.connector.model.settings.ValidateConnectorRuntimeSettingsResponse;
+import com.amazonaws.appflow.custom.connector.util.CredentialsProvider;
+import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
 
 import java.util.Map;
 import java.util.Objects;
@@ -66,12 +69,8 @@ public class SalesforceConfigurationHandler extends AbstractSalesforceHandler im
     @Override
     public ValidateCredentialsResponse validateCredentials(final ValidateCredentialsRequest request) {
         String requestUri = buildSalesforceUserInfoRequest(request);
-        ConnectorContext connectorContext = ImmutableConnectorContext.builder()
-                .credentials(request.credentials())
-                .connectorRuntimeSettings(request.connectorRuntimeSettings())
-                .build();
 
-        final SalesforceResponse response = getSalesforceClient(connectorContext).restGet(requestUri);
+        final SalesforceResponse response = getSalesforceClient(request.credentials()).restGet(requestUri);
         ErrorDetails errorDetails = checkForErrorsInSalesforceResponse(response);
         if (Objects.nonNull(errorDetails)) {
             return ImmutableValidateCredentialsResponse.builder()
@@ -108,5 +107,11 @@ public class SalesforceConfigurationHandler extends AbstractSalesforceHandler im
             return SALESFORCE_USERINFO_SANDBOX_URL_FORMAT;
         }
         return SALESFORCE_USERINFO_URL_FORMAT;
+    }
+
+    private HttpClient getSalesforceClient(Credentials credentials) {
+        OAuth2Credentials creds = CredentialsProvider.getOAuth2Credentials(AWSSecretsManagerClientBuilder.defaultClient(),
+                credentials.secretArn());
+        return new HttpClient(creds.accessToken());
     }
 }
