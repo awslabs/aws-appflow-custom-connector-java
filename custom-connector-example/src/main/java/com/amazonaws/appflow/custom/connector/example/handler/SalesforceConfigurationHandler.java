@@ -43,7 +43,6 @@ import com.amazonaws.appflow.custom.connector.model.settings.ValidateConnectorRu
 import java.util.Map;
 import java.util.Objects;
 
-import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.API_VERSION;
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.IS_SANDBOX_ACCOUNT;
 
 /**
