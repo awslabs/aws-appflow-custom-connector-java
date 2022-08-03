@@ -45,6 +45,7 @@ import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
 
 import java.util.Map;
 import java.util.Objects;
+
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.IS_SANDBOX_ACCOUNT;
 
 /**
