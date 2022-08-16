@@ -109,7 +109,7 @@ public class SalesforceConfigurationHandler extends AbstractSalesforceHandler im
         return SALESFORCE_USERINFO_URL_FORMAT;
     }
 
-    private HttpClient getSalesforceClient(Credentials credentials) {
+    private HttpClient getSalesforceClient(final Credentials credentials) {
         OAuth2Credentials creds = CredentialsProvider.getOAuth2Credentials(AWSSecretsManagerClientBuilder.defaultClient(),
                 credentials.secretArn());
         return new HttpClient(creds.accessToken());
