@@ -99,8 +99,7 @@ public interface OAuth2Defaults {
      */
     @Nullable
     List<OAuth2CustomParameter> oauth2CustomProperties();
-	
-	
+
     /**
      * Specifies if clientId and clientSecret should be added to basic auth header
      */

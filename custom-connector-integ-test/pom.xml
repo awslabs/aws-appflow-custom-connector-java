@@ -18,7 +18,7 @@
         <testng.version>7.5</testng.version>
         <fasterxml.jackson.version>2.13.3</fasterxml.jackson.version>
         <aws-cdk.version>1.89.0</aws-cdk.version>
-        <aws-sdk.version>1.12.151</aws-sdk.version>
+        <aws-sdk.version>1.12.261</aws-sdk.version>
         <guava.version>31.0.1-jre</guava.version>
         <aws-custom-connector-sdk.version>1.0.6</aws-custom-connector-sdk.version>
         <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>

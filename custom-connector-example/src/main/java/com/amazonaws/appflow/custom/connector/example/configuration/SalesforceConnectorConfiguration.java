@@ -35,12 +35,12 @@ import com.amazonaws.appflow.custom.connector.model.connectorconfiguration.auth.
 import com.amazonaws.appflow.custom.connector.model.connectorconfiguration.auth.ImmutableAuthenticationConfig;
 import com.amazonaws.appflow.custom.connector.model.settings.ImmutableConnectorRuntimeSetting;
 import com.amazonaws.appflow.custom.connector.model.write.WriteOperationType;
+import com.google.common.collect.ImmutableList;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.API_VERSION;
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.INSTANCE_URL;
 import static com.amazonaws.appflow.custom.connector.example.configuration.ConnectorSettingKey.IS_SANDBOX_ACCOUNT;
 
@@ -86,8 +86,10 @@ public final class SalesforceConnectorConfiguration {
 
     private static OAuth2Defaults getOAuth2Defaults() {
         return ImmutableOAuth2Defaults.builder()
-                .authURL(Collections.singletonList("https://login.salesforce.com/services/oauth2/authorize"))
-                .tokenURL(Collections.singletonList("https://login.salesforce.com/services/oauth2/token"))
+                .authURL(ImmutableList.of("https://login.salesforce.com/services/oauth2/authorize",
+                        "https://test.salesforce.com/services/oauth2/authorize"))
+                .tokenURL(ImmutableList.of("https://login.salesforce.com/services/oauth2/token",
+                        "https://test.salesforce.com/services/oauth2/token"))
                 .oAuthScopes(Arrays.asList("api", "refresh_token"))
                 .addOAuth2GrantTypesSupported(OAuth2GrantType.AUTHORIZATION_CODE)
                 .build();
