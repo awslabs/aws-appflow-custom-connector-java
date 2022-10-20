@@ -29,6 +29,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 
 /**
  * Represents the entity structure.
@@ -64,4 +65,11 @@ public interface Entity {
      */
     @Nullable
     String description();
+
+    /**
+     * Custom Properties of the entity.
+     * A map that has specific properties related to the ConnectorEntity.
+     */
+    @Nullable
+    Map<String, String> customProperties();
 }
