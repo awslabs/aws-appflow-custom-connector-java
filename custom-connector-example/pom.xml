@@ -29,14 +29,14 @@
     <parent>
         <artifactId>aws-appflow-custom-connector</artifactId>
         <groupId>software.amazon.appflow</groupId>
-        <version>1.0.6</version>
+        <version>1.0.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>custom-connector-example</artifactId>
 
     <properties>
-        <aws-custom-connector-sdk.version>1.0.6</aws-custom-connector-sdk.version>
+        <aws-custom-connector-sdk.version>1.0.7</aws-custom-connector-sdk.version>
         <aws-custom-connector-queryfilter.version>1.0.3</aws-custom-connector-queryfilter.version>
         <aws-custom-connector-integ-test.version>1.0.3</aws-custom-connector-integ-test.version>
         <gson.version>2.9.0</gson.version>

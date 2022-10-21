@@ -67,8 +67,7 @@ public interface Entity {
     String description();
 
     /**
-     * Custom Properties of the entity.
-     * A map that has specific properties related to the ConnectorEntity.
+     * Entity Specific custom properties.
      */
     @Nullable
     Map<String, String> customProperties();
