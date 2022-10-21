@@ -18,6 +18,8 @@ AppFlow transfers data between source and destination connectors using an increm
 
 AppFlow manages authentication information for each connector, and it makes those credentials available to the connectors with the request for data reads and writes. AppFlow depends on the connector to provide the authentication scheme(s) the connectors support and the corresponding configuration parameters. It then gives an option to the AppFlow user to pick the desired authentication scheme from the list of supported schemes for that connector. Apart from authentication configuration, connector can also declare the implementation specific runtime settings. For these settings, input from AppFlow users is required during the ConnectorProfile creation or Flow creation. AppFlow stores the user credentials in user’s security manager. The authentication credentials ARN and the runtime settings are stored along with the ConnectorProfile state, and they are passed along with every request to the connector.
 
+For more details on how to choose the AuthenticationType, please refer the AuthenticationType ReadMe https://github.com/awslabs/aws-appflow-custom-connector-java/blob/main/AuthenaticationType.md
+
 ## Entity Metadata
 
 AppFlow support dynamic discovery of schema and depends on the connectors to provide the required metadata. Therefore, 
