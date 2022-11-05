@@ -39,7 +39,8 @@ AppFlow expects the MetadataResponse to contain information about the structure 
 2. **Fields:** List of FieldDefinitions which contains information about the fields supported by this entity.
 
 
-###Entity
+### Entity
+
 * **entityIdentifier** - The unique id which is used to identify the entity in requests made to the service. This could be entityId/ entityName / entityPath+name / entityUrl etc...
 
 * **hasNestedEntities** - A boolean indicating whether the entity has nested or child entities associated with it. AppFlow uses this parameter to determine whether child entities exist and should be displayed to the user for selection during flow creation.
@@ -50,7 +51,8 @@ AppFlow expects the MetadataResponse to contain information about the structure 
 
 * **description** - An optional string field indicating the description of the entity. You can provide a description to give customers information about the entity.
 
-###FieldDefinition
+### FieldDefinition
+
 * **fieldName** - The unique identifier for the field. Used to identify the field in requests made to the service.
 
 * **dataType** - The data type of this field. AppFlow supports the following data types and you must select one of these types:
