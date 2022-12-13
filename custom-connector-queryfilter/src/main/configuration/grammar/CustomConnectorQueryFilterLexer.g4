@@ -26,7 +26,7 @@ IN         : 'IN' | 'in';
 COMMA      : ',';
 
 // represents identifier string in filter expression.
-IDENTIFIER : [a-zA-Z][A-Za-z0-9_-]*;
+IDENTIFIER : [a-zA-Z][A-Za-z0-9_.-]*;
 
 // represents decimal values like 5.0 or -5.0 etc
 DECIMAL    :'-'? [0-9]+ ( '.' [0-9]+ )?
