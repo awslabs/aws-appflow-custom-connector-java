@@ -56,6 +56,7 @@ public class QueryFilterExpressionVisitorTest {
                 Arguments.of("accountId >= 90", 2),
                 Arguments.of("accountId <= 100", 2),
                 Arguments.of("account-Id <= 100", 2),
+                Arguments.of("account.Id <= 100", 2),
                 Arguments.of("accountId BETWEEN 90 AND 100", 3),
                 Arguments.of("os CONTAINS \"mojave\"", 2),
                 Arguments.of("os CONTAINS \"moj%ave\"", 2),
