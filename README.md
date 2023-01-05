@@ -122,6 +122,39 @@ public enum FieldDataType {
 * **[filterOperators](https://github.com/awslabs/aws-appflow-custom-connector-java/blob/main/custom-connector-sdk/src/main/java/com/amazonaws/appflow/custom/connector/model/metadata/FieldDefinition.java#L128)** - This method by default provides the filter operators that are possible for this field depending on the datatype. This is used by AppFlow to determine whether a field can be used to filter and which types of filtering is supported. The connector developer may also override this method if some dataTypes need to be allowed/disallowed for certain filter operations. 
 For example, override this method if you don’t want to support CONTAINS filter operation on List dataTypes. AppFlow will then NOT send filter expression with CONTAINS for this field to your connector.
 
+## Data Format Specification
+
+Currently, the Custom Connectors can only return JSON data format when retrieving data via the QueryDataResponse interface. AppFlow expects the json data to be formatted 
+based on the datatype. However, this format is not enforced. For consistency, AppFlow encourages all developers to follow the below guidelines when constructing the 
+JSON data.
+
+### JSON
+
+AppFlow expects a list of JSON objects. Each object should contain a field for each field retrieved in the query.
+The field should be formatted based on the below table.
+
+| AppFlow DataType | Json DataType                                                                         |
+|------------------|---------------------------------------------------------------------------------------|
+| String           | string                                                                                |
+| Integer          | number                                                                                |
+| Float            | number                                                                                |
+| Double           | number                                                                                |
+| Long             | number                                                                                |
+| Short            | number                                                                                |
+| BigInteger       | number                                                                                |
+| BigDecimal       | number                                                                                |
+| ByteArray        | string: Encoded with Base64 encoding if applicable                                    |
+| Boolean          | "true" or "false"                                                                     |
+| Date             | string: ISO Date with format "2023-12-03"                                             |
+| DateTime         | string: ISO Date with time and offset and with format "2011-12-03T10:15:30.000+01:00" |
+| Struct           | object                                                                                |
+| Map              | object                                                                                |
+| List             | array                                                                                 |
+
+- Fields with Null values should be omitted from the JSON object. They may also be JSON null.
+- The contents of Map, List, and Struct data-types can be any format.
+- Date and Datetime must be ISO 8061 compliant.
+- Datetime objects do not need to include the full precision; "2011-12-03T10:15:30", "2011-12-03T10:15:00Z" are acceptable.
 
 ## SDK Interfaces
 
