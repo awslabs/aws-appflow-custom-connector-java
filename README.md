@@ -124,8 +124,8 @@ For example, override this method if you don’t want to support CONTAINS filter
 
 ## Data Format Specification
 
-Currently, the Custom Connectors can only return JSON data format when retrieving data via the QueryDataResponse interface. AppFlow expects the json data to be formatted 
-based on the datatype. However, this format is not enforced. For consistency, AppFlow encourages all developers to follow the below guidelines when constructing the 
+Currently, custom connectors can only return JSON data when retrieving data via the QueryDataResponse interface. AppFlow expects the JSON data to be formatted 
+based on the datatype. However, this format is not enforced. For consistency, AppFlow encourages all developers to follow the below guidelines when constructing 
 JSON data.
 
 ### JSON
