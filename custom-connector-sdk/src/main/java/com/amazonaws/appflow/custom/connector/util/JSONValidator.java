@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Class the can validate whether an object matches SDK Json format.
+ * Class the can validate whether an object matches SDK JSON format.
  */
 public final class JSONValidator {
 
@@ -52,9 +52,9 @@ public final class JSONValidator {
 
     /**
      * Method that validates ether an object matches SDK JSON format.
-     * @param jsonObject the serialized JSON object to be validated
-     * @param formats the formats for each field
-     * @throws DataFormatValidationException Thrown when the format is invalid
+     * @param jsonObject the serialized JSON object to be validated.
+     * @param formats the formats for each field.
+     * @throws DataFormatValidationException thrown when the format is invalid.
      */
     public void validateJsonObject(final String jsonObject, final Map<String, FieldDataType> formats)
             throws DataFormatValidationException {
@@ -69,9 +69,9 @@ public final class JSONValidator {
 
     /**
      * Method that validates ether an object matches SDK JSON format.
-     * @param jsonNode the JSON node to be validated
-     * @param formats the formats for each field
-     * @throws DataFormatValidationException Thrown when the format is invalid
+     * @param jsonNode the JSON node to be validated.
+     * @param formats the formats for each field.
+     * @throws DataFormatValidationException Thrown when the format is invalid.
      */
     public void validateJsonObject(final JsonNode jsonNode, final Map<String, FieldDataType> formats)
             throws DataFormatValidationException {
@@ -168,8 +168,8 @@ public final class JSONValidator {
 
     /**
      * Utility to construct a DataType Map from the entity Definition
-     * @param entityDefinition the Entity Definition used to construct a data type map
-     * @return A datatype map
+     * @param entityDefinition the Entity Definition used to construct a DataType Map
+     * @return A DataType Map
      */
     public static Map<String, FieldDataType> getFormatsFromEntityDefinition(final EntityDefinition entityDefinition) {
         return entityDefinition.fields().stream().collect(Collectors.toMap(FieldDefinition::fieldName, FieldDefinition::dataType));
