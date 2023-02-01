@@ -2,7 +2,7 @@
  * #%L
  * aws-custom-connector-queryfilter
  * %%
- * Copyright (C) 2021 - 2022 Amazon Web Services
+ * Copyright (C) 2021 - 2023 Amazon Web Services
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,6 +152,18 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -409,6 +421,18 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLimit(CustomConnectorQueryFilterParser.LimitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLimit(CustomConnectorQueryFilterParser.LimitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterString(CustomConnectorQueryFilterParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -464,6 +488,18 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIsoDateTime(CustomConnectorQueryFilterParser.IsoDateTimeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

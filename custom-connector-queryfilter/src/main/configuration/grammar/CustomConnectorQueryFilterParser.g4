@@ -13,6 +13,7 @@ queryfilter
 
 expression
 : LPAREN expression RPAREN                       #parenExpression  // supports parenthesis expressions
+| left=expression op=limit right=count           #limitExpression  // SQL 'LIMIT xyz' operator
 // logical operators support
 | NOT expression                                 #notExpression
 | left=expression op=andBinary right=expression     #aNDBinaryExpression
@@ -75,6 +76,9 @@ identifier
 in
 :IN ;
 
+limit
+:LIMIT ;
+
 // Following is to support different String formats in the value expression
 string
  : SINGLE_STRING
@@ -86,7 +90,12 @@ string
 
 value
 : string #stringValueExpression
+| POS_INTEGER #decimalValueExpression
 | DECIMAL #decimalValueExpression
 | DATE #isoDate
 | DATETIME #isoDateTime
+;
+
+count
+: POS_INTEGER # countValueExpression
 ;

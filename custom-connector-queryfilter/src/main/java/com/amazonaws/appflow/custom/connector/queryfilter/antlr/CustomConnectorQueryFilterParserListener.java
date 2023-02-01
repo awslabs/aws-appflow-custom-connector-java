@@ -2,7 +2,7 @@
  * #%L
  * aws-custom-connector-queryfilter
  * %%
- * Copyright (C) 2021 - 2022 Amazon Web Services
+ * Copyright (C) 2021 - 2023 Amazon Web Services
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,6 +146,18 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 * @param ctx the parse tree
 	 */
 	void exitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code equalToComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -373,6 +385,16 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 */
 	void exitIn(CustomConnectorQueryFilterParser.InContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CustomConnectorQueryFilterParser#limit}.
+	 * @param ctx the parse tree
+	 */
+	void enterLimit(CustomConnectorQueryFilterParser.LimitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CustomConnectorQueryFilterParser#limit}.
+	 * @param ctx the parse tree
+	 */
+	void exitLimit(CustomConnectorQueryFilterParser.LimitContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CustomConnectorQueryFilterParser#string}.
 	 * @param ctx the parse tree
 	 */
@@ -430,4 +452,16 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 * @param ctx the parse tree
 	 */
 	void exitIsoDateTime(CustomConnectorQueryFilterParser.IsoDateTimeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code countValueExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#count}.
+	 * @param ctx the parse tree
+	 */
+	void enterCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code countValueExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#count}.
+	 * @param ctx the parse tree
+	 */
+	void exitCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx);
 }

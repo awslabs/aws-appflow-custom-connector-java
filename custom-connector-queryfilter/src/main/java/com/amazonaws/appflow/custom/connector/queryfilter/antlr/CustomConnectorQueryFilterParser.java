@@ -2,7 +2,7 @@
  * #%L
  * aws-custom-connector-queryfilter
  * %%
- * Copyright (C) 2021 - 2022 Amazon Web Services
+ * Copyright (C) 2021 - 2023 Amazon Web Services
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,20 +39,21 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		AND=1, OR=2, NOT=3, TRUE=4, FALSE=5, GT=6, GE=7, LT=8, LE=9, EQ=10, NE=11, 
-		LIKE=12, BETWEEN=13, LPAREN=14, RPAREN=15, NULL=16, IN=17, COMMA=18, IDENTIFIER=19, 
-		DECIMAL=20, SINGLE_STRING=21, DOUBLE_STRING=22, EMPTY_SINGLE_STRING=23, 
-		EMPTY_DOUBLE_STRING=24, WS=25, DATE=26, DATETIME=27;
+		LIKE=12, BETWEEN=13, LPAREN=14, RPAREN=15, NULL=16, IN=17, LIMIT=18, COMMA=19, 
+		IDENTIFIER=20, POS_INTEGER=21, DECIMAL=22, SINGLE_STRING=23, DOUBLE_STRING=24, 
+		EMPTY_SINGLE_STRING=25, EMPTY_DOUBLE_STRING=26, WS=27, DATE=28, DATETIME=29;
 	public static final int
 		RULE_queryfilter = 0, RULE_expression = 1, RULE_gtComparator = 2, RULE_geComparator = 3, 
 		RULE_ltComparator = 4, RULE_leComparator = 5, RULE_eqComparator = 6, RULE_neComparator = 7, 
 		RULE_likeComparator = 8, RULE_betweenComparator = 9, RULE_andBinary = 10, 
 		RULE_orBinary = 11, RULE_bool = 12, RULE_identifier = 13, RULE_in = 14, 
-		RULE_string = 15, RULE_value = 16;
+		RULE_limit = 15, RULE_string = 16, RULE_value = 17, RULE_count = 18;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"queryfilter", "expression", "gtComparator", "geComparator", "ltComparator", 
 			"leComparator", "eqComparator", "neComparator", "likeComparator", "betweenComparator", 
-			"andBinary", "orBinary", "bool", "identifier", "in", "string", "value"
+			"andBinary", "orBinary", "bool", "identifier", "in", "limit", "string", 
+			"value", "count"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -60,16 +61,16 @@ public class CustomConnectorQueryFilterParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, null, null, null, null, null, "'>'", "'>='", "'<'", "'<='", "'='", 
-			"'!='", null, null, "'('", "')'", "'null'", null, "','"
+			"'!='", null, null, "'('", "')'", "'null'", null, null, "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "AND", "OR", "NOT", "TRUE", "FALSE", "GT", "GE", "LT", "LE", "EQ", 
-			"NE", "LIKE", "BETWEEN", "LPAREN", "RPAREN", "NULL", "IN", "COMMA", "IDENTIFIER", 
-			"DECIMAL", "SINGLE_STRING", "DOUBLE_STRING", "EMPTY_SINGLE_STRING", "EMPTY_DOUBLE_STRING", 
-			"WS", "DATE", "DATETIME"
+			"NE", "LIKE", "BETWEEN", "LPAREN", "RPAREN", "NULL", "IN", "LIMIT", "COMMA", 
+			"IDENTIFIER", "POS_INTEGER", "DECIMAL", "SINGLE_STRING", "DOUBLE_STRING", 
+			"EMPTY_SINGLE_STRING", "EMPTY_DOUBLE_STRING", "WS", "DATE", "DATETIME"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -153,9 +154,9 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(34);
+			setState(38);
 			expression(0);
-			setState(35);
+			setState(39);
 			match(EOF);
 			}
 		}
@@ -397,6 +398,34 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof CustomConnectorQueryFilterParserVisitor ) return ((CustomConnectorQueryFilterParserVisitor<? extends T>)visitor).visitORBinaryExpression(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class LimitExpressionContext extends ExpressionContext {
+		public ExpressionContext left;
+		public LimitContext op;
+		public CountContext right;
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public LimitContext limit() {
+			return getRuleContext(LimitContext.class,0);
+		}
+		public CountContext count() {
+			return getRuleContext(CountContext.class,0);
+		}
+		public LimitExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).enterLimitExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).exitLimitExpression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CustomConnectorQueryFilterParserVisitor ) return ((CustomConnectorQueryFilterParserVisitor<? extends T>)visitor).visitLimitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -656,7 +685,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(101);
+			setState(105);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
@@ -665,11 +694,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(38);
+				setState(42);
 				match(LPAREN);
-				setState(39);
+				setState(43);
 				expression(0);
-				setState(40);
+				setState(44);
 				match(RPAREN);
 				}
 				break;
@@ -678,9 +707,9 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new NotExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(42);
+				setState(46);
 				match(NOT);
-				setState(43);
+				setState(47);
 				expression(16);
 				}
 				break;
@@ -689,11 +718,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new GreaterThanComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(44);
+				setState(48);
 				((GreaterThanComparatorExpressionContext)_localctx).left = identifier();
-				setState(45);
+				setState(49);
 				((GreaterThanComparatorExpressionContext)_localctx).op = gtComparator();
-				setState(46);
+				setState(50);
 				((GreaterThanComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -702,11 +731,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new GreaterThanEqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(48);
+				setState(52);
 				((GreaterThanEqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(49);
+				setState(53);
 				((GreaterThanEqualToComparatorExpressionContext)_localctx).op = geComparator();
-				setState(50);
+				setState(54);
 				((GreaterThanEqualToComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -715,11 +744,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new LesserThanComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(52);
+				setState(56);
 				((LesserThanComparatorExpressionContext)_localctx).left = identifier();
-				setState(53);
+				setState(57);
 				((LesserThanComparatorExpressionContext)_localctx).op = ltComparator();
-				setState(54);
+				setState(58);
 				((LesserThanComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -728,11 +757,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new LesserThanEqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(56);
+				setState(60);
 				((LesserThanEqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(57);
+				setState(61);
 				((LesserThanEqualToComparatorExpressionContext)_localctx).op = leComparator();
-				setState(58);
+				setState(62);
 				((LesserThanEqualToComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -741,11 +770,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new EqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(60);
+				setState(64);
 				((EqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(61);
+				setState(65);
 				((EqualToComparatorExpressionContext)_localctx).op = eqComparator();
-				setState(62);
+				setState(66);
 				((EqualToComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -754,11 +783,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new BoolEqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(64);
+				setState(68);
 				((BoolEqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(65);
+				setState(69);
 				((BoolEqualToComparatorExpressionContext)_localctx).op = eqComparator();
-				setState(66);
+				setState(70);
 				((BoolEqualToComparatorExpressionContext)_localctx).right = bool();
 				}
 				break;
@@ -767,11 +796,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new NotEqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(68);
+				setState(72);
 				((NotEqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(69);
+				setState(73);
 				((NotEqualToComparatorExpressionContext)_localctx).op = neComparator();
-				setState(70);
+				setState(74);
 				((NotEqualToComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -780,11 +809,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new BoolNotEqualToComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(72);
+				setState(76);
 				((BoolNotEqualToComparatorExpressionContext)_localctx).left = identifier();
-				setState(73);
+				setState(77);
 				((BoolNotEqualToComparatorExpressionContext)_localctx).op = neComparator();
-				setState(74);
+				setState(78);
 				((BoolNotEqualToComparatorExpressionContext)_localctx).right = bool();
 				}
 				break;
@@ -793,11 +822,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new LikeComparatorExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(76);
+				setState(80);
 				((LikeComparatorExpressionContext)_localctx).left = identifier();
-				setState(77);
+				setState(81);
 				((LikeComparatorExpressionContext)_localctx).op = likeComparator();
-				setState(78);
+				setState(82);
 				((LikeComparatorExpressionContext)_localctx).right = value();
 				}
 				break;
@@ -807,16 +836,16 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				{
-				setState(80);
+				setState(84);
 				((BetweenExpressionContext)_localctx).left = identifier();
-				setState(81);
+				setState(85);
 				((BetweenExpressionContext)_localctx).op = betweenComparator();
 				{
-				setState(82);
+				setState(86);
 				((BetweenExpressionContext)_localctx).l1 = value();
-				setState(83);
+				setState(87);
 				((BetweenExpressionContext)_localctx).op1 = andBinary();
-				setState(84);
+				setState(88);
 				((BetweenExpressionContext)_localctx).right = value();
 				}
 				}
@@ -827,7 +856,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new IdentifierExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(86);
+				setState(90);
 				identifier();
 				}
 				break;
@@ -836,7 +865,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new ValueExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(87);
+				setState(91);
 				value();
 				}
 				break;
@@ -845,37 +874,37 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new InExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(88);
+				setState(92);
 				identifier();
-				setState(89);
+				setState(93);
 				((InExpressionContext)_localctx).op = in();
-				setState(90);
+				setState(94);
 				match(LPAREN);
-				setState(91);
+				setState(95);
 				value();
-				setState(96);
+				setState(100);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(92);
+					setState(96);
 					match(COMMA);
-					setState(93);
+					setState(97);
 					value();
 					}
 					}
-					setState(98);
+					setState(102);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(99);
+				setState(103);
 				match(RPAREN);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(113);
+			setState(121);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -883,7 +912,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(111);
+					setState(119);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 					case 1:
@@ -891,11 +920,11 @@ public class CustomConnectorQueryFilterParser extends Parser {
 						_localctx = new ANDBinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((ANDBinaryExpressionContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(103);
+						setState(107);
 						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
-						setState(104);
+						setState(108);
 						((ANDBinaryExpressionContext)_localctx).op = andBinary();
-						setState(105);
+						setState(109);
 						((ANDBinaryExpressionContext)_localctx).right = expression(16);
 						}
 						break;
@@ -904,18 +933,31 @@ public class CustomConnectorQueryFilterParser extends Parser {
 						_localctx = new ORBinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((ORBinaryExpressionContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(107);
+						setState(111);
 						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
-						setState(108);
+						setState(112);
 						((ORBinaryExpressionContext)_localctx).op = orBinary();
-						setState(109);
+						setState(113);
 						((ORBinaryExpressionContext)_localctx).right = expression(15);
+						}
+						break;
+					case 3:
+						{
+						_localctx = new LimitExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						((LimitExpressionContext)_localctx).left = _prevctx;
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(115);
+						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
+						setState(116);
+						((LimitExpressionContext)_localctx).op = limit();
+						setState(117);
+						((LimitExpressionContext)_localctx).right = count();
 						}
 						break;
 					}
 					} 
 				}
-				setState(115);
+				setState(123);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			}
@@ -959,7 +1001,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(116);
+			setState(124);
 			match(GT);
 			}
 		}
@@ -1001,7 +1043,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118);
+			setState(126);
 			match(GE);
 			}
 		}
@@ -1043,7 +1085,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(120);
+			setState(128);
 			match(LT);
 			}
 		}
@@ -1085,7 +1127,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(122);
+			setState(130);
 			match(LE);
 			}
 		}
@@ -1127,7 +1169,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
+			setState(132);
 			match(EQ);
 			}
 		}
@@ -1169,7 +1211,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(134);
 			match(NE);
 			}
 		}
@@ -1211,7 +1253,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(128);
+			setState(136);
 			match(LIKE);
 			}
 		}
@@ -1253,7 +1295,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(130);
+			setState(138);
 			match(BETWEEN);
 			}
 		}
@@ -1295,7 +1337,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(132);
+			setState(140);
 			match(AND);
 			}
 		}
@@ -1337,7 +1379,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(142);
 			match(OR);
 			}
 		}
@@ -1381,7 +1423,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(136);
+			setState(144);
 			_la = _input.LA(1);
 			if ( !(_la==TRUE || _la==FALSE) ) {
 			_errHandler.recoverInline(this);
@@ -1431,7 +1473,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(138);
+			setState(146);
 			match(IDENTIFIER);
 			}
 		}
@@ -1473,8 +1515,50 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(140);
+			setState(148);
 			match(IN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LimitContext extends ParserRuleContext {
+		public TerminalNode LIMIT() { return getToken(CustomConnectorQueryFilterParser.LIMIT, 0); }
+		public LimitContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_limit; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).enterLimit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).exitLimit(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CustomConnectorQueryFilterParserVisitor ) return ((CustomConnectorQueryFilterParserVisitor<? extends T>)visitor).visitLimit(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final LimitContext limit() throws RecognitionException {
+		LimitContext _localctx = new LimitContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_limit);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(150);
+			match(LIMIT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1515,12 +1599,12 @@ public class CustomConnectorQueryFilterParser extends Parser {
 
 	public final StringContext string() throws RecognitionException {
 		StringContext _localctx = new StringContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_string);
+		enterRule(_localctx, 32, RULE_string);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(142);
+			setState(152);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NULL) | (1L << SINGLE_STRING) | (1L << DOUBLE_STRING) | (1L << EMPTY_SINGLE_STRING) | (1L << EMPTY_DOUBLE_STRING))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1574,6 +1658,7 @@ public class CustomConnectorQueryFilterParser extends Parser {
 		}
 	}
 	public static class DecimalValueExpressionContext extends ValueContext {
+		public TerminalNode POS_INTEGER() { return getToken(CustomConnectorQueryFilterParser.POS_INTEGER, 0); }
 		public TerminalNode DECIMAL() { return getToken(CustomConnectorQueryFilterParser.DECIMAL, 0); }
 		public DecimalValueExpressionContext(ValueContext ctx) { copyFrom(ctx); }
 		@Override
@@ -1627,9 +1712,9 @@ public class CustomConnectorQueryFilterParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_value);
+		enterRule(_localctx, 34, RULE_value);
 		try {
-			setState(148);
+			setState(159);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NULL:
@@ -1640,36 +1725,95 @@ public class CustomConnectorQueryFilterParser extends Parser {
 				_localctx = new StringValueExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(144);
+				setState(154);
 				string();
+				}
+				break;
+			case POS_INTEGER:
+				_localctx = new DecimalValueExpressionContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(155);
+				match(POS_INTEGER);
 				}
 				break;
 			case DECIMAL:
 				_localctx = new DecimalValueExpressionContext(_localctx);
-				enterOuterAlt(_localctx, 2);
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(145);
+				setState(156);
 				match(DECIMAL);
 				}
 				break;
 			case DATE:
 				_localctx = new IsoDateContext(_localctx);
-				enterOuterAlt(_localctx, 3);
+				enterOuterAlt(_localctx, 4);
 				{
-				setState(146);
+				setState(157);
 				match(DATE);
 				}
 				break;
 			case DATETIME:
 				_localctx = new IsoDateTimeContext(_localctx);
-				enterOuterAlt(_localctx, 4);
+				enterOuterAlt(_localctx, 5);
 				{
-				setState(147);
+				setState(158);
 				match(DATETIME);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class CountContext extends ParserRuleContext {
+		public CountContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_count; }
+	 
+		public CountContext() { }
+		public void copyFrom(CountContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class CountValueExpressionContext extends CountContext {
+		public TerminalNode POS_INTEGER() { return getToken(CustomConnectorQueryFilterParser.POS_INTEGER, 0); }
+		public CountValueExpressionContext(CountContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).enterCountValueExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CustomConnectorQueryFilterParserListener ) ((CustomConnectorQueryFilterParserListener)listener).exitCountValueExpression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CustomConnectorQueryFilterParserVisitor ) return ((CustomConnectorQueryFilterParserVisitor<? extends T>)visitor).visitCountValueExpression(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final CountContext count() throws RecognitionException {
+		CountContext _localctx = new CountContext(_ctx, getState());
+		enterRule(_localctx, 36, RULE_count);
+		try {
+			_localctx = new CountValueExpressionContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(161);
+			match(POS_INTEGER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1696,51 +1840,58 @@ public class CustomConnectorQueryFilterParser extends Parser {
 			return precpred(_ctx, 15);
 		case 1:
 			return precpred(_ctx, 14);
+		case 2:
+			return precpred(_ctx, 17);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\u0099\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37\u00a6\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\4\23\t\23\4\24\t\24\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3a\n\3\f\3\16\3d\13\3\3\3\3\3\5\3h\n"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3r\n\3\f\3\16\3u\13\3\3\4\3\4\3\5"+
-		"\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r"+
-		"\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\22\3\22\5\22\u0097"+
-		"\n\22\3\22\2\3\4\23\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"\2\4\3\2"+
-		"\6\7\4\2\22\22\27\32\2\u009b\2$\3\2\2\2\4g\3\2\2\2\6v\3\2\2\2\bx\3\2\2"+
-		"\2\nz\3\2\2\2\f|\3\2\2\2\16~\3\2\2\2\20\u0080\3\2\2\2\22\u0082\3\2\2\2"+
-		"\24\u0084\3\2\2\2\26\u0086\3\2\2\2\30\u0088\3\2\2\2\32\u008a\3\2\2\2\34"+
-		"\u008c\3\2\2\2\36\u008e\3\2\2\2 \u0090\3\2\2\2\"\u0096\3\2\2\2$%\5\4\3"+
-		"\2%&\7\2\2\3&\3\3\2\2\2\'(\b\3\1\2()\7\20\2\2)*\5\4\3\2*+\7\21\2\2+h\3"+
-		"\2\2\2,-\7\5\2\2-h\5\4\3\22./\5\34\17\2/\60\5\6\4\2\60\61\5\"\22\2\61"+
-		"h\3\2\2\2\62\63\5\34\17\2\63\64\5\b\5\2\64\65\5\"\22\2\65h\3\2\2\2\66"+
-		"\67\5\34\17\2\678\5\n\6\289\5\"\22\29h\3\2\2\2:;\5\34\17\2;<\5\f\7\2<"+
-		"=\5\"\22\2=h\3\2\2\2>?\5\34\17\2?@\5\16\b\2@A\5\"\22\2Ah\3\2\2\2BC\5\34"+
-		"\17\2CD\5\16\b\2DE\5\32\16\2Eh\3\2\2\2FG\5\34\17\2GH\5\20\t\2HI\5\"\22"+
-		"\2Ih\3\2\2\2JK\5\34\17\2KL\5\20\t\2LM\5\32\16\2Mh\3\2\2\2NO\5\34\17\2"+
-		"OP\5\22\n\2PQ\5\"\22\2Qh\3\2\2\2RS\5\34\17\2ST\5\24\13\2TU\5\"\22\2UV"+
-		"\5\26\f\2VW\5\"\22\2Wh\3\2\2\2Xh\5\34\17\2Yh\5\"\22\2Z[\5\34\17\2[\\\5"+
-		"\36\20\2\\]\7\20\2\2]b\5\"\22\2^_\7\24\2\2_a\5\"\22\2`^\3\2\2\2ad\3\2"+
-		"\2\2b`\3\2\2\2bc\3\2\2\2ce\3\2\2\2db\3\2\2\2ef\7\21\2\2fh\3\2\2\2g\'\3"+
-		"\2\2\2g,\3\2\2\2g.\3\2\2\2g\62\3\2\2\2g\66\3\2\2\2g:\3\2\2\2g>\3\2\2\2"+
-		"gB\3\2\2\2gF\3\2\2\2gJ\3\2\2\2gN\3\2\2\2gR\3\2\2\2gX\3\2\2\2gY\3\2\2\2"+
-		"gZ\3\2\2\2hs\3\2\2\2ij\f\21\2\2jk\5\26\f\2kl\5\4\3\22lr\3\2\2\2mn\f\20"+
-		"\2\2no\5\30\r\2op\5\4\3\21pr\3\2\2\2qi\3\2\2\2qm\3\2\2\2ru\3\2\2\2sq\3"+
-		"\2\2\2st\3\2\2\2t\5\3\2\2\2us\3\2\2\2vw\7\b\2\2w\7\3\2\2\2xy\7\t\2\2y"+
-		"\t\3\2\2\2z{\7\n\2\2{\13\3\2\2\2|}\7\13\2\2}\r\3\2\2\2~\177\7\f\2\2\177"+
-		"\17\3\2\2\2\u0080\u0081\7\r\2\2\u0081\21\3\2\2\2\u0082\u0083\7\16\2\2"+
-		"\u0083\23\3\2\2\2\u0084\u0085\7\17\2\2\u0085\25\3\2\2\2\u0086\u0087\7"+
-		"\3\2\2\u0087\27\3\2\2\2\u0088\u0089\7\4\2\2\u0089\31\3\2\2\2\u008a\u008b"+
-		"\t\2\2\2\u008b\33\3\2\2\2\u008c\u008d\7\25\2\2\u008d\35\3\2\2\2\u008e"+
-		"\u008f\7\23\2\2\u008f\37\3\2\2\2\u0090\u0091\t\3\2\2\u0091!\3\2\2\2\u0092"+
-		"\u0097\5 \21\2\u0093\u0097\7\26\2\2\u0094\u0097\7\34\2\2\u0095\u0097\7"+
-		"\35\2\2\u0096\u0092\3\2\2\2\u0096\u0093\3\2\2\2\u0096\u0094\3\2\2\2\u0096"+
-		"\u0095\3\2\2\2\u0097#\3\2\2\2\7bgqs\u0096";
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3e\n\3\f\3\16\3h"+
+		"\13\3\3\3\3\3\5\3l\n\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\7\3z\n\3\f\3\16\3}\13\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3"+
+		"\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\21"+
+		"\3\21\3\22\3\22\3\23\3\23\3\23\3\23\3\23\5\23\u00a2\n\23\3\24\3\24\3\24"+
+		"\2\3\4\25\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&\2\4\3\2\6\7\4\2"+
+		"\22\22\31\34\2\u00a8\2(\3\2\2\2\4k\3\2\2\2\6~\3\2\2\2\b\u0080\3\2\2\2"+
+		"\n\u0082\3\2\2\2\f\u0084\3\2\2\2\16\u0086\3\2\2\2\20\u0088\3\2\2\2\22"+
+		"\u008a\3\2\2\2\24\u008c\3\2\2\2\26\u008e\3\2\2\2\30\u0090\3\2\2\2\32\u0092"+
+		"\3\2\2\2\34\u0094\3\2\2\2\36\u0096\3\2\2\2 \u0098\3\2\2\2\"\u009a\3\2"+
+		"\2\2$\u00a1\3\2\2\2&\u00a3\3\2\2\2()\5\4\3\2)*\7\2\2\3*\3\3\2\2\2+,\b"+
+		"\3\1\2,-\7\20\2\2-.\5\4\3\2./\7\21\2\2/l\3\2\2\2\60\61\7\5\2\2\61l\5\4"+
+		"\3\22\62\63\5\34\17\2\63\64\5\6\4\2\64\65\5$\23\2\65l\3\2\2\2\66\67\5"+
+		"\34\17\2\678\5\b\5\289\5$\23\29l\3\2\2\2:;\5\34\17\2;<\5\n\6\2<=\5$\23"+
+		"\2=l\3\2\2\2>?\5\34\17\2?@\5\f\7\2@A\5$\23\2Al\3\2\2\2BC\5\34\17\2CD\5"+
+		"\16\b\2DE\5$\23\2El\3\2\2\2FG\5\34\17\2GH\5\16\b\2HI\5\32\16\2Il\3\2\2"+
+		"\2JK\5\34\17\2KL\5\20\t\2LM\5$\23\2Ml\3\2\2\2NO\5\34\17\2OP\5\20\t\2P"+
+		"Q\5\32\16\2Ql\3\2\2\2RS\5\34\17\2ST\5\22\n\2TU\5$\23\2Ul\3\2\2\2VW\5\34"+
+		"\17\2WX\5\24\13\2XY\5$\23\2YZ\5\26\f\2Z[\5$\23\2[l\3\2\2\2\\l\5\34\17"+
+		"\2]l\5$\23\2^_\5\34\17\2_`\5\36\20\2`a\7\20\2\2af\5$\23\2bc\7\25\2\2c"+
+		"e\5$\23\2db\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2gi\3\2\2\2hf\3\2\2\2"+
+		"ij\7\21\2\2jl\3\2\2\2k+\3\2\2\2k\60\3\2\2\2k\62\3\2\2\2k\66\3\2\2\2k:"+
+		"\3\2\2\2k>\3\2\2\2kB\3\2\2\2kF\3\2\2\2kJ\3\2\2\2kN\3\2\2\2kR\3\2\2\2k"+
+		"V\3\2\2\2k\\\3\2\2\2k]\3\2\2\2k^\3\2\2\2l{\3\2\2\2mn\f\21\2\2no\5\26\f"+
+		"\2op\5\4\3\22pz\3\2\2\2qr\f\20\2\2rs\5\30\r\2st\5\4\3\21tz\3\2\2\2uv\f"+
+		"\23\2\2vw\5 \21\2wx\5&\24\2xz\3\2\2\2ym\3\2\2\2yq\3\2\2\2yu\3\2\2\2z}"+
+		"\3\2\2\2{y\3\2\2\2{|\3\2\2\2|\5\3\2\2\2}{\3\2\2\2~\177\7\b\2\2\177\7\3"+
+		"\2\2\2\u0080\u0081\7\t\2\2\u0081\t\3\2\2\2\u0082\u0083\7\n\2\2\u0083\13"+
+		"\3\2\2\2\u0084\u0085\7\13\2\2\u0085\r\3\2\2\2\u0086\u0087\7\f\2\2\u0087"+
+		"\17\3\2\2\2\u0088\u0089\7\r\2\2\u0089\21\3\2\2\2\u008a\u008b\7\16\2\2"+
+		"\u008b\23\3\2\2\2\u008c\u008d\7\17\2\2\u008d\25\3\2\2\2\u008e\u008f\7"+
+		"\3\2\2\u008f\27\3\2\2\2\u0090\u0091\7\4\2\2\u0091\31\3\2\2\2\u0092\u0093"+
+		"\t\2\2\2\u0093\33\3\2\2\2\u0094\u0095\7\26\2\2\u0095\35\3\2\2\2\u0096"+
+		"\u0097\7\23\2\2\u0097\37\3\2\2\2\u0098\u0099\7\24\2\2\u0099!\3\2\2\2\u009a"+
+		"\u009b\t\3\2\2\u009b#\3\2\2\2\u009c\u00a2\5\"\22\2\u009d\u00a2\7\27\2"+
+		"\2\u009e\u00a2\7\30\2\2\u009f\u00a2\7\36\2\2\u00a0\u00a2\7\37\2\2\u00a1"+
+		"\u009c\3\2\2\2\u00a1\u009d\3\2\2\2\u00a1\u009e\3\2\2\2\u00a1\u009f\3\2"+
+		"\2\2\u00a1\u00a0\3\2\2\2\u00a2%\3\2\2\2\u00a3\u00a4\7\27\2\2\u00a4\'\3"+
+		"\2\2\2\7fky{\u00a1";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

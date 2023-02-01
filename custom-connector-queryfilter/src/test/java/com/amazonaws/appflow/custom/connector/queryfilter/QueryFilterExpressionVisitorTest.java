@@ -54,6 +54,7 @@ public class QueryFilterExpressionVisitorTest {
                 Arguments.of("time between 1511630000000 and 1611639476298", 3),
                 Arguments.of("accountId < 100", 2),
                 Arguments.of("accountId >= 90", 2),
+                Arguments.of("accountId >= 90 LIMIT 100", 4),
                 Arguments.of("accountId <= 100", 2),
                 Arguments.of("account-Id <= 100", 2),
                 Arguments.of("account.Id <= 100", 2),
