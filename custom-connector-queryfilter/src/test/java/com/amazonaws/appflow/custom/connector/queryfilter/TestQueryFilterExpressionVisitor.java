@@ -148,4 +148,16 @@ public class TestQueryFilterExpressionVisitor extends CustomConnectorQueryFilter
         countOfExpressionsVisited++;
         return super.visitIsoDateTime(ctx);
     }
+
+    @Override
+    public Integer visitLimit(CustomConnectorQueryFilterParser.LimitContext ctx) {
+        countOfExpressionsVisited++;
+        return super.visitLimit(ctx);
+    }
+
+    @Override
+    public Integer visitCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx) {
+        countOfExpressionsVisited++;
+        return super.visitCountValueExpression(ctx);
+    }
 }

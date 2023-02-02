@@ -2,7 +2,7 @@
  * #%L
  * aws-custom-connector-queryfilter
  * %%
- * Copyright (C) 2021 - 2022 Amazon Web Services
+ * Copyright (C) 2021 - 2023 Amazon Web Services
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,6 +100,13 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 * @return the visitor result
 	 */
 	T visitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code equalToComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -235,6 +242,12 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 */
 	T visitIn(CustomConnectorQueryFilterParser.InContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CustomConnectorQueryFilterParser#limit}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLimit(CustomConnectorQueryFilterParser.LimitContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CustomConnectorQueryFilterParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -268,4 +281,11 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 * @return the visitor result
 	 */
 	T visitIsoDateTime(CustomConnectorQueryFilterParser.IsoDateTimeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code countValueExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#count}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx);
 }

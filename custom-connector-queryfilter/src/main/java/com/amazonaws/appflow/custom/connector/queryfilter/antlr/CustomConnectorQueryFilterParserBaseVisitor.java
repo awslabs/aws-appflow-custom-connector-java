@@ -2,7 +2,7 @@
  * #%L
  * aws-custom-connector-queryfilter
  * %%
- * Copyright (C) 2021 - 2022 Amazon Web Services
+ * Copyright (C) 2021 - 2023 Amazon Web Services
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,6 +102,13 @@ public class CustomConnectorQueryFilterParserBaseVisitor<T> extends AbstractPars
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -255,6 +262,13 @@ public class CustomConnectorQueryFilterParserBaseVisitor<T> extends AbstractPars
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitLimit(CustomConnectorQueryFilterParser.LimitContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitString(CustomConnectorQueryFilterParser.StringContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -284,4 +298,11 @@ public class CustomConnectorQueryFilterParserBaseVisitor<T> extends AbstractPars
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitIsoDateTime(CustomConnectorQueryFilterParser.IsoDateTimeContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCountValueExpression(CustomConnectorQueryFilterParser.CountValueExpressionContext ctx) { return visitChildren(ctx); }
 }
