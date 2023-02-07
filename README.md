@@ -142,7 +142,7 @@ The field should be formatted based on the below table.
 | Long             | number                                                                                |
 | Short            | number                                                                                |
 | BigInteger       | number                                                                                |
-| BigDecimal       | string                                                                                |
+| BigDecimal       | number                                                                                |
 | ByteArray        | string: Encoded with Base64 encoding if applicable                                    |
 | Boolean          | "true" or "false"                                                                     |
 | Date             | string: ISO Date with format "2023-12-03"                                             |
@@ -155,7 +155,6 @@ The field should be formatted based on the below table.
 - The contents of Map, List, and Struct data-types can be any format.
 - Date and Datetime must be ISO 8061 compliant.
 - Datetime objects do not need to include the full precision; "2011-12-03T10:15:30", "2011-12-03T10:15:00Z" are acceptable.
-- Big Decimal is returned as a string in order to avoid lose of precision.
 
 ## SDK Interfaces
 
