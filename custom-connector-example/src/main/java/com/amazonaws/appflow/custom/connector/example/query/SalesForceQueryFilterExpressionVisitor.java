@@ -128,7 +128,8 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
                                           FORMATTER.formatValue(lowerBound, dataType, COMPARISON_GREATER)))
                     .append(LOGICAL_AND)
                     .append(String.format(CONDITION_FORMAT, identifier, COMPARISON_LESSER,
-                                          FORMATTER.formatValue(upperBound, dataType, COMPARISON_LESSER)));
+                                          FORMATTER.formatValue(upperBound, dataType, COMPARISON_LESSER)))
+                    .append(SPACE);
         }
         return visitChildren(ctx);
     }
@@ -143,7 +144,7 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
             String values = inClauseValues.stream().map(valueContext -> FORMATTER
                                                   .formatValue(valueContext.getText(), dataType, null))
                                           .collect(Collectors.joining(","));
-            queryBuilder.append(values).append(RIGHT_PARENTHESIS);
+            queryBuilder.append(values).append(RIGHT_PARENTHESIS).append(SPACE);
             return queryBuilder; // There are no child nodes to visit further
         }
         return visitChildren(ctx);
@@ -283,12 +284,12 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
 
     @Override
     public StringBuilder visitIsoDate(final CustomConnectorQueryFilterParser.IsoDateContext ctx) {
-        return queryBuilder.append(ctx.getText());
+        return queryBuilder.append(ctx.getText()).append(SPACE);
     }
 
     @Override
     public StringBuilder visitIsoDateTime(final CustomConnectorQueryFilterParser.IsoDateTimeContext ctx) {
-        return queryBuilder.append(OffsetDateTime.parse(ctx.getText()).toInstant().toString());
+        return queryBuilder.append(OffsetDateTime.parse(ctx.getText()).toInstant().toString()).append(SPACE);
     }
 
     @Override
@@ -300,7 +301,7 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
      * Returns the final query expression built for Salesforce. Separated into (where, limit) clauses.
      */
     public Pair<String, String> getResult() {
-        return Pair.of(queryBuilder.toString(), limitBuilder.toString());
+        return Pair.of(queryBuilder.toString().trim(), limitBuilder.toString().trim());
     }
 
     @FunctionalInterface
