@@ -51,8 +51,8 @@
     </licenses>
 
     <properties>
-        <antlr4-runtime.version>4.9.1</antlr4-runtime.version>
-        <antlr4-maven-plugin.version>4.9.1</antlr4-maven-plugin.version>
+        <antlr4-runtime.version>4.9.3</antlr4-runtime.version>
+        <antlr4-maven-plugin.version>4.9.3</antlr4-maven-plugin.version>
     </properties>
 
     <dependencies>

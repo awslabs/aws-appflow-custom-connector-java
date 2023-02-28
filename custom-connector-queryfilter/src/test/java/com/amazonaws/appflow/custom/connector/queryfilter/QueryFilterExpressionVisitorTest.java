@@ -48,6 +48,7 @@ public class QueryFilterExpressionVisitorTest {
         return Stream.of(
                 Arguments.of("os = \"mojave\"", 2),
                 Arguments.of("os != \"mojave\"", 2),
+                Arguments.of("LIMIT 100", 2),
                 Arguments.of("accountId > 90", 2),
                 Arguments.of("dateRange BETWEEN 1611639470000 AND 1611639476298", 3),
                 Arguments.of("date BETWEEN 1511630000000 AND 1611639476298", 3),
