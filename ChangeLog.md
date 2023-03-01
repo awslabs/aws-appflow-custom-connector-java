@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
+## [1.0.9] - 2023-02-28
+### Added
+- Added support for `LIMIT` in the query filter expression.
+- Added a JSON validator to validate that objects match the SDK format.
+
+## [1.0.8] - 2022-12-21
+### Added
+- Added support for subfields delimited by periods.
+
 ## [1.0.7] - 2022-10-21
 ### Added
 - Added support for Entity specific custom properties.
