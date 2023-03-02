@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.1
+// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -38,6 +38,18 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 * @param ctx the parse tree
 	 */
 	void exitQueryfilter(CustomConnectorQueryFilterParser.QueryfilterContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code lesserThanComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -146,18 +158,6 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 * @param ctx the parse tree
 	 */
 	void exitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code equalToComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.

@@ -30,6 +30,7 @@ import com.amazonaws.appflow.custom.connector.queryfilter.CustomConnectorParseTr
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public final class SalesforceQueryBuilder {
     private static final String WHERE_CLAUSE = "where";
     private static final String FROM_CLAUSE = "from";
     private static final String SELECT_CLAUSE = "select";
+    private static final String LIMIT_CLAUSE = "limit";
 
     public static String buildQuery(final QueryObject queryObject) {
 
@@ -64,16 +66,21 @@ public final class SalesforceQueryBuilder {
         // QueryData allows data filtering based on filter expression.
         if (Strings.isNotBlank(queryObject.filterExpression())) {
             // adding filter expression in the query
-            String whereClause = translateFilterExpression(queryObject.filterExpression(), queryObject.entityDefinition());
+            Pair<String, String> whereAndLimitClauses = translateFilterExpression(queryObject.filterExpression(), queryObject.entityDefinition());
+            String whereClause = whereAndLimitClauses.getLeft();
+            String limitClause = whereAndLimitClauses.getRight();
             if (StringUtils.isNotBlank(whereClause)) {
                 clauses.add(String.format(CLAUSE_STRING_FORMAT, WHERE_CLAUSE, whereClause));
+            }
+            if (StringUtils.isNotBlank(limitClause)) {
+                clauses.add(String.format(CLAUSE_STRING_FORMAT, LIMIT_CLAUSE, limitClause));
             }
         } else {
             // RetrieveData allows data filtering based on entity primary Id fields
             if (StringUtils.isNotBlank(queryObject.idFieldName()) && CollectionUtils.isNotEmpty(queryObject.fields()) &&
-                    StringUtils.isNotBlank(queryObject.dataType())) {
+                StringUtils.isNotBlank(queryObject.dataType())) {
                 conditions = addOrConditions("=", conditions, queryObject.idFieldName(), queryObject.fields(),
-                        queryObject.dataType());
+                                             queryObject.dataType());
             }
             if (CollectionUtils.isNotEmpty(conditions)) {
                 final String whereClause = String.join(WHERE_AND, conditions);
@@ -134,7 +141,7 @@ public final class SalesforceQueryBuilder {
         return '\'' + string + '\'';
     }
 
-    private static String translateFilterExpression(final String filterExpression, final EntityDefinition entityDefinition) {
+    private static Pair<String, String> translateFilterExpression(final String filterExpression, final EntityDefinition entityDefinition) {
         if (StringUtils.isNotBlank(filterExpression)) {
             ParseTree parseTree = CustomConnectorParseTreeBuilder.parse(filterExpression);
             SalesForceQueryFilterExpressionVisitor salesForceQueryFilterExpressionVisitor = new SalesForceQueryFilterExpressionVisitor(entityDefinition);
@@ -144,6 +151,6 @@ public final class SalesforceQueryBuilder {
             return salesForceQueryFilterExpressionVisitor.getResult();
         }
         // no filter expression is defined
-        return StringUtils.EMPTY;
+        return Pair.of(StringUtils.EMPTY, StringUtils.EMPTY);
     }
 }

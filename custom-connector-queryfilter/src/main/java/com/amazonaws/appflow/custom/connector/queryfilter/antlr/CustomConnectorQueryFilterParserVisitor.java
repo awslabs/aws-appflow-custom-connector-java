@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.1
+// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -37,6 +37,13 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 * @return the visitor result
 	 */
 	T visitQueryfilter(CustomConnectorQueryFilterParser.QueryfilterContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code limitExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code lesserThanComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -100,13 +107,6 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 * @return the visitor result
 	 */
 	T visitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code equalToComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
