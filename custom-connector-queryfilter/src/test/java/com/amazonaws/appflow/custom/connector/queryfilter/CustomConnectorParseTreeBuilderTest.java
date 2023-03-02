@@ -52,6 +52,7 @@ public class CustomConnectorParseTreeBuilderTest {
         return Stream.of(
                 Arguments.of("os = \"mojave\""),
                 Arguments.of("os != \"mojave\""),
+                Arguments.of("LIMIT 100"),
                 Arguments.of("accountId > 90"),
                 Arguments.of("dateRange BETWEEN 1611639470000 AND 1611639476298"),
                 Arguments.of("date BETWEEN 1511630000000 AND 1611639476298"),
@@ -82,6 +83,7 @@ public class CustomConnectorParseTreeBuilderTest {
         return Stream.of(
                 Arguments.of("os == \"mojave\""),
                 Arguments.of("os <> \"mojave\""),
+                Arguments.of("LIMIT 100 LIMIT 100"),
                 Arguments.of("accountId => 90"),
                 Arguments.of("accountId >= 90 LIMIT"),
                 Arguments.of("accountId >= 90 LIMIT 0"),

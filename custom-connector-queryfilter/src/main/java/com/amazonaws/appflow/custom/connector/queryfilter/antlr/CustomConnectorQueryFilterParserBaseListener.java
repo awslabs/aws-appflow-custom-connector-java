@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.1
+// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -44,6 +44,18 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQueryfilter(CustomConnectorQueryFilterParser.QueryfilterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -152,18 +164,6 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitORBinaryExpression(CustomConnectorQueryFilterParser.ORBinaryExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

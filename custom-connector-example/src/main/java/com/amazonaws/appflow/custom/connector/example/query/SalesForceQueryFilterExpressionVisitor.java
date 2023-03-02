@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,6 +24,7 @@ import com.amazonaws.appflow.custom.connector.model.metadata.FieldDefinition;
 import com.amazonaws.appflow.custom.connector.queryfilter.antlr.CustomConnectorQueryFilterParser;
 import com.amazonaws.appflow.custom.connector.queryfilter.antlr.CustomConnectorQueryFilterParserBaseVisitor;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -49,9 +50,10 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
 
     // helps build the WHERE-clause for Salesforce SOQL
     private final StringBuilder queryBuilder = new StringBuilder();
+    private final StringBuilder limitBuilder = new StringBuilder();
 
     // Caller will provide the entity definition for the queried entity. This holds field level metadata for the entity.
-    private EntityDefinition entityDefinition;
+    private final EntityDefinition entityDefinition;
 
     private static final String SPACE = " ";
 
@@ -61,17 +63,17 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
     private static final List<String> DATE_TYPES = Arrays.asList(DATE, DATE_TIME);
     private static final List<String> STRING_TYPES = Arrays.asList("String", "id", "textarea");
     private static final List<String> NON_STRING_TYPES = Arrays.asList("Boolean", "double",
-            "Integer", "Float", "Double", "Short", "Long", "Currency");
+                                                                       "Integer", "Float", "Double", "Short", "Long", "Currency");
 
     // Salesforce supported date formatting for building query. This formatting is applied on
     // filter expression values which has respective datatype mentioned into map
     private static final Map<String, DateTimeFormatter> FORMAT_TYPE_MAP =
             new HashMap<String, DateTimeFormatter>() {
-            {
+                {
                     put(DATE, DateTimeFormatter.ofPattern("uuuu-MM-dd").withZone(ZoneId.of("UTC")));
                     put(DATE_TIME, DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss.SSSZ").withZone(ZoneId.of("UTC")));
-            }
-    };
+                }
+            };
 
     private static final String CONTAINS = "CONTAINS";
 
@@ -109,7 +111,7 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
     // constructor
     public SalesForceQueryFilterExpressionVisitor(final EntityDefinition entityDefinition) {
         Objects.requireNonNull(entityDefinition,
-                "entityDefinition can't be null as it is required for building filter query");
+                               "entityDefinition can't be null as it is required for building filter query");
         this.entityDefinition = entityDefinition;
     }
 
@@ -123,10 +125,11 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
             String dataType = getFieldDatatype(ctx.getChild(0).getText()).dataType().name();
             return queryBuilder
                     .append(String.format(CONDITION_FORMAT, identifier, COMPARISON_GREATER,
-                            FORMATTER.formatValue(lowerBound, dataType, COMPARISON_GREATER)))
+                                          FORMATTER.formatValue(lowerBound, dataType, COMPARISON_GREATER)))
                     .append(LOGICAL_AND)
                     .append(String.format(CONDITION_FORMAT, identifier, COMPARISON_LESSER,
-                            FORMATTER.formatValue(upperBound, dataType, COMPARISON_LESSER)));
+                                          FORMATTER.formatValue(upperBound, dataType, COMPARISON_LESSER)))
+                    .append(SPACE);
         }
         return visitChildren(ctx);
     }
@@ -139,9 +142,9 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
             queryBuilder.append(identifier).append(IN).append(LEFT_PARENTHESIS); // setting up the IN clause
             List<CustomConnectorQueryFilterParser.ValueContext>  inClauseValues = ctx.value();
             String values = inClauseValues.stream().map(valueContext -> FORMATTER
-                    .formatValue(valueContext.getText(), dataType, null))
-                    .collect(Collectors.joining(","));
-            queryBuilder.append(values).append(RIGHT_PARENTHESIS);
+                                                  .formatValue(valueContext.getText(), dataType, null))
+                                          .collect(Collectors.joining(","));
+            queryBuilder.append(values).append(RIGHT_PARENTHESIS).append(SPACE);
             return queryBuilder; // There are no child nodes to visit further
         }
         return visitChildren(ctx);
@@ -281,30 +284,35 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
 
     @Override
     public StringBuilder visitIsoDate(final CustomConnectorQueryFilterParser.IsoDateContext ctx) {
-        return queryBuilder.append(ctx.getText());
+        return queryBuilder.append(ctx.getText()).append(SPACE);
     }
 
     @Override
     public StringBuilder visitIsoDateTime(final CustomConnectorQueryFilterParser.IsoDateTimeContext ctx) {
-        return queryBuilder.append(OffsetDateTime.parse(ctx.getText()).toInstant().toString());
+        return queryBuilder.append(OffsetDateTime.parse(ctx.getText()).toInstant().toString()).append(SPACE);
+    }
+
+    @Override
+    public StringBuilder visitCountValueExpression(final CustomConnectorQueryFilterParser.CountValueExpressionContext ctx) {
+        return limitBuilder.append(ctx.getText()).append(SPACE);
     }
 
     /**
-     * Returns the final query expression built for Salesforce
+     * Returns the final query expression built for Salesforce. Separated into (where, limit) clauses.
      */
-    public String getResult() {
-        return queryBuilder.toString();
+    public Pair<String, String> getResult() {
+        return Pair.of(queryBuilder.toString().trim(), limitBuilder.toString().trim());
     }
 
     @FunctionalInterface
     interface ValueFormatter {
         Predicate<String> HAS_CUSTOM_QUOTES = val -> (val.startsWith("'") || val.startsWith("\"")) && (val.endsWith("'")
-                || val.endsWith("\""));
+                                                                                                       || val.endsWith("\""));
         Function<String, String> STRIP_QUOTES = val -> val.substring(1, val.length() - 1);
         Function<String, String> REPLACE_SINGLE_QUOTES = val -> val.replace("'", "\\'");
         BiFunction<String, String, String> ADD_WILD_CARDS =
                 (val, operator) -> CONTAINS.equalsIgnoreCase(operator) && !val.contains("%")
-                ? "%" + val + "%" : val;
+                                   ? "%" + val + "%" : val;
         BiFunction<String, String, String> FORMAT_DATE_TYPE = (val, type) -> {
             if (DATE.equals(type)) {
                 // This does not handle the use-case where type was Date and passed in value is ISO 8601 date time
@@ -326,8 +334,8 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
      */
     private FieldDefinition getFieldDatatype(final String fieldName) {
         return entityDefinition.fields().stream()
-                .filter(field -> StringUtils.equals(field.fieldName(), fieldName))
-                .findFirst().orElseThrow(() -> new IllegalStateException(
+                               .filter(field -> StringUtils.equals(field.fieldName(), fieldName))
+                               .findFirst().orElseThrow(() -> new IllegalStateException(
                         "Filter attribute not found in entity definition"));
     }
 }
