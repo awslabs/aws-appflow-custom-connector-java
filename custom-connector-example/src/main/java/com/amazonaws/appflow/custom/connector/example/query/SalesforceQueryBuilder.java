@@ -30,7 +30,7 @@ import com.amazonaws.appflow.custom.connector.queryfilter.CustomConnectorParseTr
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.ArrayList;
@@ -51,6 +51,7 @@ public final class SalesforceQueryBuilder {
     private static final String FROM_CLAUSE = "from";
     private static final String SELECT_CLAUSE = "select";
     private static final String LIMIT_CLAUSE = "limit";
+    private static final String ORDER_BY_CLAUSE = "order by";
 
     public static String buildQuery(final QueryObject queryObject) {
 
@@ -66,11 +67,16 @@ public final class SalesforceQueryBuilder {
         // QueryData allows data filtering based on filter expression.
         if (Strings.isNotBlank(queryObject.filterExpression())) {
             // adding filter expression in the query
-            Pair<String, String> whereAndLimitClauses = translateFilterExpression(queryObject.filterExpression(), queryObject.entityDefinition());
-            String whereClause = whereAndLimitClauses.getLeft();
-            String limitClause = whereAndLimitClauses.getRight();
+            Triple<String, String, String>
+                    queryClauses = translateFilterExpression(queryObject.filterExpression(), queryObject.entityDefinition());
+            String whereClause = queryClauses.getLeft();
+            String orderByClause = queryClauses.getMiddle();
+            String limitClause = queryClauses.getRight();
             if (StringUtils.isNotBlank(whereClause)) {
                 clauses.add(String.format(CLAUSE_STRING_FORMAT, WHERE_CLAUSE, whereClause));
+            }
+            if (StringUtils.isNotBlank(orderByClause)) {
+                clauses.add(String.format(CLAUSE_STRING_FORMAT, ORDER_BY_CLAUSE, orderByClause));
             }
             if (StringUtils.isNotBlank(limitClause)) {
                 clauses.add(String.format(CLAUSE_STRING_FORMAT, LIMIT_CLAUSE, limitClause));
@@ -141,7 +147,7 @@ public final class SalesforceQueryBuilder {
         return '\'' + string + '\'';
     }
 
-    private static Pair<String, String> translateFilterExpression(final String filterExpression, final EntityDefinition entityDefinition) {
+    private static Triple<String, String, String> translateFilterExpression(final String filterExpression, final EntityDefinition entityDefinition) {
         if (StringUtils.isNotBlank(filterExpression)) {
             ParseTree parseTree = CustomConnectorParseTreeBuilder.parse(filterExpression);
             SalesForceQueryFilterExpressionVisitor salesForceQueryFilterExpressionVisitor = new SalesForceQueryFilterExpressionVisitor(entityDefinition);
@@ -151,6 +157,6 @@ public final class SalesforceQueryBuilder {
             return salesForceQueryFilterExpressionVisitor.getResult();
         }
         // no filter expression is defined
-        return Pair.of(StringUtils.EMPTY, StringUtils.EMPTY);
+        return Triple.of(StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY);
     }
 }

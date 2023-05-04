@@ -160,4 +160,10 @@ public class TestQueryFilterExpressionVisitor extends CustomConnectorQueryFilter
         countOfExpressionsVisited++;
         return super.visitCountValueExpression(ctx);
     }
+
+    @Override
+    public Integer visitOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx) {
+        countOfExpressionsVisited++;
+        return super.visitOrderByExpression(ctx);
+    }
 }

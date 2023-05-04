@@ -23,8 +23,9 @@ import com.amazonaws.appflow.custom.connector.model.metadata.EntityDefinition;
 import com.amazonaws.appflow.custom.connector.model.metadata.FieldDefinition;
 import com.amazonaws.appflow.custom.connector.queryfilter.antlr.CustomConnectorQueryFilterParser;
 import com.amazonaws.appflow.custom.connector.queryfilter.antlr.CustomConnectorQueryFilterParserBaseVisitor;
+import org.antlr.v4.runtime.RuleContext;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -50,6 +51,7 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
 
     // helps build the WHERE-clause for Salesforce SOQL
     private final StringBuilder queryBuilder = new StringBuilder();
+    private final StringBuilder orderByBuilder = new StringBuilder();
     private final StringBuilder limitBuilder = new StringBuilder();
 
     // Caller will provide the entity definition for the queried entity. This holds field level metadata for the entity.
@@ -297,11 +299,27 @@ public class SalesForceQueryFilterExpressionVisitor extends CustomConnectorQuery
         return limitBuilder.append(ctx.getText()).append(SPACE);
     }
 
+    @Override
+    public StringBuilder visitOrderByExpression(final CustomConnectorQueryFilterParser.OrderByExpressionContext ctx) {
+        if (ctx.identifier().size() > 0) {
+            List<CustomConnectorQueryFilterParser.IdentifierContext> orderByIdentifiers = ctx.identifier();
+            String identifiers = orderByIdentifiers.stream().map(RuleContext::getText).collect(Collectors.joining(","));
+            orderByBuilder.append(identifiers).append(SPACE);
+            orderByBuilder.append(ctx.right.getText()).append(SPACE);
+        }
+
+        // Only visit the left expression instead of visiting all children
+        if (ctx.left != null) {
+            visit(ctx.left);
+        }
+        return orderByBuilder;
+    }
+
     /**
      * Returns the final query expression built for Salesforce. Separated into (where, limit) clauses.
      */
-    public Pair<String, String> getResult() {
-        return Pair.of(queryBuilder.toString().trim(), limitBuilder.toString().trim());
+    public Triple<String, String, String> getResult() {
+        return Triple.of(queryBuilder.toString().trim(), orderByBuilder.toString().trim(), limitBuilder.toString().trim());
     }
 
     @FunctionalInterface

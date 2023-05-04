@@ -25,7 +25,7 @@ import com.amazonaws.appflow.custom.connector.model.metadata.ImmutableEntity;
 import com.amazonaws.appflow.custom.connector.model.metadata.ImmutableEntityDefinition;
 import com.amazonaws.appflow.custom.connector.model.metadata.ImmutableFieldDefinition;
 import com.amazonaws.appflow.custom.connector.queryfilter.CustomConnectorParseTreeBuilder;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,35 +56,41 @@ public class SalesForceQueryFilterExpressionVisitorTest {
     void testConversionFromFilterExpressionToSalesforceQuery(
             final String filterExpression,
             final String expectedWhereExpression,
+            final String expectedOrderByExpression,
             final String expectedLimitExpression) {
         salesForceQueryFilterExpressionVisitor.visit(CustomConnectorParseTreeBuilder.parse(filterExpression));
-        Pair<String, String> result = salesForceQueryFilterExpressionVisitor.getResult();
+        Triple<String, String, String> result = salesForceQueryFilterExpressionVisitor.getResult();
         Assertions.assertEquals(expectedWhereExpression, result.getLeft());
+        Assertions.assertEquals(expectedOrderByExpression, result.getMiddle());
         Assertions.assertEquals(expectedLimitExpression, result.getRight());
     }
 
     private static Stream<Arguments> getTestFilterExpression() {
         return Stream.of(
-                Arguments.of("Name = \"TestAccountName\"", "Name = 'TestAccountName'", ""),
-                Arguments.of("Name = \"TestAccountName\" limit 100", "Name = 'TestAccountName'", "100"),
+                Arguments.of("Name = \"TestAccountName\"", "Name = 'TestAccountName'", "", ""),
+                Arguments.of("Name = \"TestAccountName\" limit 100", "Name = 'TestAccountName'", "", "100"),
+                Arguments.of("Name = \"TestAccountName\" order by Name asc", "Name = 'TestAccountName'", "Name asc", ""),
+                Arguments.of("Name = \"TestAccountName\" order by Name, OS asc", "Name = 'TestAccountName'", "Name,OS asc", ""),
+                Arguments.of("Name = \"TestAccountName\" order by Name, OS asc limit 100", "Name = 'TestAccountName'", "Name,OS asc", "100"),
+                Arguments.of("order by Name, OS asc", "", "Name,OS asc", ""),
                 Arguments.of("Id != '0016g00001cyrfiAAA' AND AccountNumber = 40",
-                             "Id != '0016g00001cyrfiAAA' AND AccountNumber = 40", ""),
+                             "Id != '0016g00001cyrfiAAA' AND AccountNumber = 40", "", ""),
                 Arguments.of("CreatedDate > 2021-04-20T10:30:35Z AND AccountNumber = 40",
-                             "CreatedDate > 2021-04-20T10:30:35Z AND AccountNumber = 40", ""),
+                             "CreatedDate > 2021-04-20T10:30:35Z AND AccountNumber = 40", "", ""),
                 Arguments.of("CreatedDate between 2021-04-20T10:30:35Z and 2021-04-25T10:30:35Z",
-                             "CreatedDate > 2021-04-20T10:30:35.000+0000 and CreatedDate < 2021-04-25T10:30:35.000+0000", ""),
+                             "CreatedDate > 2021-04-20T10:30:35.000+0000 and CreatedDate < 2021-04-25T10:30:35.000+0000", "", ""),
                 Arguments.of("Id in (5, 7, 9, 10)",
-                             "Id IN ('5','7','9','10')", ""),
+                             "Id IN ('5','7','9','10')", "", ""),
                 Arguments.of("Name = \"TestAccountName\" and Id in (5, 7, 9, 10) and AccountNumber > 100",
-                             "Name = 'TestAccountName' and Id IN ('5','7','9','10') and AccountNumber > 100", ""),
+                             "Name = 'TestAccountName' and Id IN ('5','7','9','10') and AccountNumber > 100", "", ""),
                 Arguments.of(
                         "(AccountNumber > 100 and ((CreatedDate < 2021-04-20T12:30:45Z and CreatedDate > 2021-04-21T15:45:49.234Z) and Name contains \"TestAccountName\"))",
                         "AccountNumber > 100 and CreatedDate < 2021-04-20T12:30:45Z and CreatedDate > " +
-                        "2021-04-21T15:45:49.234Z and Name LIKE '%TestAccountName%'", ""),
+                        "2021-04-21T15:45:49.234Z and Name LIKE '%TestAccountName%'", "", ""),
                 Arguments.of(
                         "(AccountNumber > 100 and ((CreatedDate < 2021-04-20T12:30:45Z and CreatedDate > 2021-04-21T15:45:49.234Z) and Name contains \"TestAccountName\")) limit 100",
                         "AccountNumber > 100 and CreatedDate < 2021-04-20T12:30:45Z and CreatedDate > " +
-                        "2021-04-21T15:45:49.234Z and Name LIKE '%TestAccountName%'", "100"));
+                        "2021-04-21T15:45:49.234Z and Name LIKE '%TestAccountName%'", "", "100"));
     }
 
     /**

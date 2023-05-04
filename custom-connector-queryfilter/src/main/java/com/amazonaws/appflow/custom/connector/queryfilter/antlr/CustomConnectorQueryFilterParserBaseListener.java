@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
+// Generated from src/main/configuration/grammar/CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -56,6 +56,18 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -428,6 +440,30 @@ public class CustomConnectorQueryFilterParserBaseListener implements CustomConne
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLimit(CustomConnectorQueryFilterParser.LimitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrder(CustomConnectorQueryFilterParser.OrderContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrder(CustomConnectorQueryFilterParser.OrderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

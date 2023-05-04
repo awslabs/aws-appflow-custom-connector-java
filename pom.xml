@@ -68,8 +68,8 @@
     </licenses>
 
     <modules>
-        <module>custom-connector-sdk</module>
         <module>custom-connector-queryfilter</module>
+        <module>custom-connector-sdk</module>
         <module>custom-connector-example</module>
         <module>custom-connector-tests</module>
         <module>custom-connector-integ-test</module>
