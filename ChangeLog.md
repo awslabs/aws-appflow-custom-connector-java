@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Added support for `LIMIT` in the query filter expression.
 - Added a JSON validator to validate that objects match the SDK format.
+- Added `Url` type in the ConnectorRuntimeSettingDataType.
 
 ## [1.0.8] - 2022-12-21
 ### Added
