@@ -33,5 +33,6 @@ public enum ConnectorRuntimeSettingDataType {
     DateTime,
     Long,
     Integer,
-    Boolean
+    Boolean,
+    Url
 }
