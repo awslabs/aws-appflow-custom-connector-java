@@ -335,7 +335,7 @@ destination connector by invoking the `writeData` function.
   If the Lambda invocation takes more than 30 seconds, then that will result in a timeout and connector error will be surfaced to the customer. 
   For the use cases where the query execution might take more than 30 seconds, consider reducing the page sizes so that each page can be fetched under 30 seconds.
 - For `describeConnectorConfiguration`, `validateConnectorRuntimeSettings`, `validateCredentials`, `describeEntity` and `listEntities` calls,
-  AppFlow expects the connectors to respond within 10 seconds. If the Lambda invocation takes more than 30 seconds then that will result in a timeout and connector error will be surfaced to the customer.
+  AppFlow expects the connectors to respond within 10 seconds. If the Lambda invocation takes more than 10 seconds then that will result in a timeout and connector error will be surfaced to the customer.
 - Response size should not be more than 6 MB (Lambda memory limit). If the response is more than 6 MB, consider reducing the page size.  
   Alternatively, when Lambda errors out because of response exceeding the limit, retry the query with smaller page size. This approach could result in a timeout because of the 30 seconds overall limit.
 - SDK supports only structured data where the AppFlow expects the connector has defined entities and each entity has metadata associated with it.
