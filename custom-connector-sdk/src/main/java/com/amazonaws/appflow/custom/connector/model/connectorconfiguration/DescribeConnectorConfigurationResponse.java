@@ -132,4 +132,15 @@ public interface DescribeConnectorConfigurationResponse {
      */
     @Nullable
     ErrorDetails errorDetails();
+
+    /**
+     * Specifies a list of DataTransferType options the connector can support.
+     * Connector that support RECORD as a source is compatible with connectors that support either RECORD or FILE as destinations.
+     * Connector that support FILE as a source is only compatible with connectors that support FILE transfer as destinations.
+     */
+    @Value.Default
+    @Nullable
+    default List<DataTransferType> supportedDataTransferTypes() {
+        return Arrays.asList(DataTransferType.RECORD);
+    }
 }
