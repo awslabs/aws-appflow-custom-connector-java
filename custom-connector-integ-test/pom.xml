@@ -19,7 +19,7 @@
         <fasterxml.jackson.version>2.13.5</fasterxml.jackson.version>
         <aws-cdk.version>1.89.0</aws-cdk.version>
         <aws-sdk.version>1.12.261</aws-sdk.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <aws-custom-connector-sdk.version>1.0.9</aws-custom-connector-sdk.version>
         <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
         <log4j2-cachefile-transformer.version>2.8.1</log4j2-cachefile-transformer.version>
