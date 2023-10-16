@@ -53,7 +53,7 @@
     <properties>
         <log4j.version>2.17.1</log4j.version>
         <secretsmanager.version>1.0.1</secretsmanager.version>
-        <json.version>20211205</json.version>
+        <json.version>20230227</json.version>
     </properties>
 
     <dependencies>

@@ -54,7 +54,7 @@ public final class SalesforceConnectorConfiguration {
     public static List<ConnectorRuntimeSetting> getConnectorRuntimeSettings() {
         ConnectorRuntimeSetting instanceUrl = ImmutableConnectorRuntimeSetting.builder()
                 .key(INSTANCE_URL)
-                .dataType(ConnectorRuntimeSettingDataType.String)
+                .dataType(ConnectorRuntimeSettingDataType.Url)
                 .required(true)
                 .label("Salesforce Instance URL")
                 .description("URL of the instance where user wants to run the operations.")
