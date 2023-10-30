@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
+// Generated from src/main/configuration/grammar/CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -39,11 +39,18 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	T visitQueryfilter(CustomConnectorQueryFilterParser.QueryfilterContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code orderByExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#orderbyexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code lesserThanComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -247,6 +254,18 @@ public interface CustomConnectorQueryFilterParserVisitor<T> extends ParseTreeVis
 	 * @return the visitor result
 	 */
 	T visitLimit(CustomConnectorQueryFilterParser.LimitContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CustomConnectorQueryFilterParser#orderby}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CustomConnectorQueryFilterParser#order}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrder(CustomConnectorQueryFilterParser.OrderContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CustomConnectorQueryFilterParser#string}.
 	 * @param ctx the parse tree

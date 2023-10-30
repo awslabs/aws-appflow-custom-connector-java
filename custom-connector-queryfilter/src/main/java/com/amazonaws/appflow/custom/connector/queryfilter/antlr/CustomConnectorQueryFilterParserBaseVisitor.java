@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
+// Generated from src/main/configuration/grammar/CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -46,6 +46,13 @@ public class CustomConnectorQueryFilterParserBaseVisitor<T> extends AbstractPars
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -263,6 +270,20 @@ public class CustomConnectorQueryFilterParserBaseVisitor<T> extends AbstractPars
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitLimit(CustomConnectorQueryFilterParser.LimitContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitOrder(CustomConnectorQueryFilterParser.OrderContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

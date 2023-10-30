@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-// Generated from CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
+// Generated from src/main/configuration/grammar/CustomConnectorQueryFilterParser.g4 by ANTLR 4.9.3
 
 package com.amazonaws.appflow.custom.connector.queryfilter.antlr;
 
@@ -40,16 +40,28 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	void exitQueryfilter(CustomConnectorQueryFilterParser.QueryfilterContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpr}.
 	 * @param ctx the parse tree
 	 */
 	void enterLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code limitExpression}
-	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpression}.
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#limitexpr}.
 	 * @param ctx the parse tree
 	 */
 	void exitLimitExpression(CustomConnectorQueryFilterParser.LimitExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code orderByExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#orderbyexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code orderByExpression}
+	 * labeled alternative in {@link CustomConnectorQueryFilterParser#orderbyexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrderByExpression(CustomConnectorQueryFilterParser.OrderByExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code lesserThanComparatorExpression}
 	 * labeled alternative in {@link CustomConnectorQueryFilterParser#expression}.
@@ -394,6 +406,26 @@ public interface CustomConnectorQueryFilterParserListener extends ParseTreeListe
 	 * @param ctx the parse tree
 	 */
 	void exitLimit(CustomConnectorQueryFilterParser.LimitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CustomConnectorQueryFilterParser#orderby}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CustomConnectorQueryFilterParser#orderby}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrderby(CustomConnectorQueryFilterParser.OrderbyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CustomConnectorQueryFilterParser#order}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrder(CustomConnectorQueryFilterParser.OrderContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CustomConnectorQueryFilterParser#order}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrder(CustomConnectorQueryFilterParser.OrderContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CustomConnectorQueryFilterParser#string}.
 	 * @param ctx the parse tree

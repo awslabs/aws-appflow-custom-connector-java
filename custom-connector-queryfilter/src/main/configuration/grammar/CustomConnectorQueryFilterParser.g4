@@ -9,12 +9,19 @@ options  { tokenVocab=CustomConnectorQueryFilterLexer; }
 // 'queryfilter' is the root node for the filter expression
 queryfilter
 : expression EOF
-| limitexpression EOF
+| orderbyexpr EOF
+| limitexpr EOF
 ;
 
-limitexpression
-: op=limit right=count                              #limitExpression
-| left=expression op=limit right=count              #limitExpression  // SQL 'LIMIT xyz' operator
+limitexpr
+: op=limit right=count                               #limitExpression
+| left=expression op=limit right=count               #limitExpression
+| orderbyexpr op=limit right=count              #limitExpression  // SQL 'LIMIT xyz' operator
+;
+
+orderbyexpr
+: op=orderby identifier (COMMA identifier)* right=order                  #orderByExpression
+| left=expression op=orderby identifier (COMMA identifier)* right=order  #orderByExpression // SQL 'ORDER BY xyz, abc ASC|DESC' operator
 ;
 
 expression
@@ -83,6 +90,12 @@ in
 
 limit
 :LIMIT ;
+
+orderby
+:ORDERBY ;
+
+order
+:ASC | DESC;
 
 // Following is to support different String formats in the value expression
 string

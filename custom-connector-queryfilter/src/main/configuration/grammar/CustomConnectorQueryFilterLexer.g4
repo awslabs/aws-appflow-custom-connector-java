@@ -24,13 +24,16 @@ RPAREN     : ')' ;
 NULL       : 'null';
 IN         : 'IN' | 'in';
 LIMIT      : 'LIMIT' | 'limit';
+ORDERBY    : 'ORDER BY' | 'order by';
+ASC        : 'ASC' | 'asc';
+DESC       : 'DESC' | 'desc';
 COMMA      : ',';
 
 // represents identifier string in filter expression.
 IDENTIFIER : [a-zA-Z][A-Za-z0-9_.-]*;
 
 // represents a positive non-zero integer
-POS_INTEGER: [1-9][0-9]+
+POS_INTEGER: [1-9]+[0-9]*
 ;
 
 // represents decimal values like 5.0 or -5.0 etc
