@@ -85,7 +85,7 @@
         <aws-license-manager-version>1.12.73</aws-license-manager-version>
         <immutables-value.version>2.9.0</immutables-value.version>
         <jsr305.version>3.0.2</jsr305.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
 
         <!--Test dependencies -->
         <junit5.version>5.7.0</junit5.version>
